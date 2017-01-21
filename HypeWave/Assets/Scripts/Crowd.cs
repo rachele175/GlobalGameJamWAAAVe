@@ -7,10 +7,12 @@ public class Crowd : MonoBehaviour
 {
     public static Crowd Instance;
 
+    public Transform stageVisPrefab;
+
     public CrowdMember crowdMemberPrefab;
     public int crowdSize = 20;
     private CrowdMember[,] crowdVis;
-    public float transmissionSpeed = 0.8f;
+    //public float transmissionSpeed = 0.8f;
     public float hypeTransmissionDecay = 0.1f;
 
     public int fieldSize = 20;
@@ -19,6 +21,27 @@ public class Crowd : MonoBehaviour
     public float maxHype = 2;
 
     public event Action crowdUpdate;
+    public event Action<float,float,float,float> pitStart;
+
+    private struct Pit
+    {
+        public float x;
+        public float y;
+        public float radius;
+        public float stopTime;
+    }
+    private List<Pit> pits;
+    [Serializable]
+    private struct Stage
+    {
+        public float x1;
+        public float y1;
+        public float x2;
+        public float y2;
+    }
+    [SerializeField]
+    private Stage[] stages;
+    public Vector2 respawnPoint;
 
     private void Awake()
     {
@@ -27,6 +50,8 @@ public class Crowd : MonoBehaviour
 
     private void Start()
     {
+        pits = new List<Pit>();
+
         moveField = new Vector2[fieldSize, fieldSize];
         hypeField = new Vector2[fieldSize, fieldSize];
 
@@ -39,11 +64,58 @@ public class Crowd : MonoBehaviour
                 crowdVis[x, y].SetPosition(x, y);
             }
         }
+
+        foreach(Stage stage in stages)
+        {
+            float x1 = stage.x1;
+            float x2 = stage.x2;
+            float y1 = stage.y1;
+            float y2 = stage.y2;
+            Transform stageVis = Instantiate(stageVisPrefab);
+            stageVis.position = new Vector3(x1 + (x2 - x1) / 2f, 0, y1 + (y2 - y1) / 2f);
+            stageVis.localScale = new Vector3(x2 - x1, 1, y2 - y1);
+        }
     }
 
-    internal Vector2 GetCrowdPosition(float x, float z)
+    public Vector2 GetCrowdPosition(float x, float z)
     {
         return new Vector2(x, z);
+    }
+
+    public void StartPit(float x, float y, float radius, float duration)
+    {
+        Pit newPit = new Pit();
+        newPit.x = x;
+        newPit.y = y;
+        newPit.radius = radius;
+        newPit.stopTime = Time.time + duration;
+        pits.Add(newPit);
+
+        pitStart.Invoke(x, y, radius, duration);
+    }
+
+    internal bool IsPit(float x, float y)
+    {
+        foreach(Pit pit in pits)
+        {
+            if (Vector2.Distance(new Vector2(pit.x, pit.y), new Vector2(x, y)) < pit.radius)
+            {
+                return true;
+            } 
+        }
+        return false;
+    }
+
+    internal bool IsStage(float x, float y)
+    {
+        foreach (Stage stage in stages)
+        {
+            if (x > stage.x1 && x < stage.x2 && y > stage.y1 && y < stage.y2)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void AddHype(float x, float y, Vector2 hype)
@@ -129,6 +201,20 @@ public class Crowd : MonoBehaviour
         {
             lastCrowdUpdate = Time.time;
 
+            // cull expired pits
+            List<Pit> donepits = new List<Pit>();
+            foreach(Pit pit in pits)
+            {
+                if(pit.stopTime < Time.time)
+                {
+                    donepits.Add(pit);
+                }
+            }
+            foreach(Pit pit in donepits)
+            {
+                pits.Remove(pit);
+            }
+
             Vector2[,] newField = new Vector2[fieldSize, fieldSize];
             Vector2[,] newHype = new Vector2[fieldSize, fieldSize];
 
@@ -141,8 +227,8 @@ public class Crowd : MonoBehaviour
 
                     if (x > 0 && x < fieldSize - 1 && y > 0 && y < fieldSize - 1)
                     {
-                        Vector2 waveTransmission = moveField[x, y] * waveDecay * transmissionSpeed;
-                        newField[x, y] += moveField[x, y] * waveDecay * (1 - transmissionSpeed);
+                        Vector2 waveTransmission = moveField[x, y] * waveDecay;// * transmissionSpeed;
+                        //newField[x, y] += moveField[x, y] * waveDecay * (1 - transmissionSpeed);
 
                         // iterate across our 8 neighbors
                         for (int dx = -1; dx <= 1; dx++)
@@ -170,6 +256,17 @@ public class Crowd : MonoBehaviour
                                 }
                             }
                         }
+                    }
+                }
+            }
+
+            for (int x = 1; x < fieldSize - 1; x++)
+            {
+                for (int y = 1; y < fieldSize - 1; y++)
+                {
+                    if(IsPit(x,y) || IsStage(x, y))
+                    {
+                        newField[x,y] = Vector2.zero;
                     }
                 }
             }
