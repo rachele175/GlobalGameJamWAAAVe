@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CrowdPlayer : MonoBehaviour
 {
-    public float pushAmount = 0.2f;
+    public float waveSize = 0.2f;
+    public float pushInfluence = 1f;
     public float speed = 0.5f;
     public float hypeAmount = 2;
     private Crowd crowd;
@@ -12,29 +13,41 @@ public class CrowdPlayer : MonoBehaviour
     public string inputNumber = "1";
     public bool debugInput = true;
 
+    private float staunchitude;
+    public float staunchitudeTime = 0.5f;
+
+    private Vector2 lastMove;
+
     private void Start()
     {
         crowd = Crowd.Instance;
+        crowd.crowdUpdate += CrowdUpdate;
     }
 
     private void Update()
     {
         if (debugInput)
         {
-            transform.position += speed * Vector3.right * Input.GetAxis(inputNumber + "Horizontal")
-                                + speed * Vector3.forward * Input.GetAxis(inputNumber + "Vertical");
+            lastMove = Vector3.right * Input.GetAxis(inputNumber + "Horizontal") + Vector3.up * Input.GetAxis(inputNumber + "Vertical");
+            transform.position += speed * lastMove.x * Vector3.right
+                                + speed * lastMove.y * Vector3.forward;
 
-            crowd.AddHype(transform.position.x, transform.position.z, Vector2.right * Input.GetAxis(inputNumber + "Horizontal")
-                                                                    + Vector2.up    * Input.GetAxis(inputNumber + "Vertical"));
 
-            if (Input.GetButton(inputNumber + "Wave"))
+            if (Input.GetButtonDown(inputNumber + "Wave"))
             {
-                crowd.AddMove(transform.position.x, transform.position.z, pushAmount);
+                crowd.AddMove(transform.position.x, transform.position.z, waveSize);
+                staunchitude = 1;
             }
         }
 
-        Vector2 crowdPush = crowd.GetMove(transform.position.x, transform.position.z);
+        staunchitude = Mathf.Clamp(staunchitude - 1f / staunchitudeTime * Time.deltaTime, 0, 1);
+    }
 
-        transform.position += new Vector3(crowdPush.x, 0, crowdPush.y) * pushAmount;
+    private void CrowdUpdate()
+    {
+        Vector2 crowdPush = crowd.GetMove(transform.position.x, transform.position.z);
+        transform.position += new Vector3(crowdPush.x, 0, crowdPush.y) * pushInfluence * (1 - staunchitude);
+
+        crowd.AddHype(transform.position.x, transform.position.z, lastMove * hypeAmount);
     }
 }

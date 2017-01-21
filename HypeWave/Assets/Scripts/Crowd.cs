@@ -11,6 +11,7 @@ public class Crowd : MonoBehaviour
     public int crowdSize = 20;
     private CrowdMember[,] crowdVis;
     public float transmissionSpeed = 0.8f;
+    public float hypeTransmissionDecay = 0.1f;
 
     public int fieldSize = 20;
     public Vector2[,] moveField;
@@ -47,14 +48,14 @@ public class Crowd : MonoBehaviour
             int xi = Mathf.RoundToInt(x);
             int yi = Mathf.RoundToInt(y);
 
-            hypeField[xi + 1, yi] = hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi + 1, yi));
-            hypeField[xi - 1, yi] = hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi - 1, yi));
-            hypeField[xi, yi - 1] = hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi, yi - 1));
-            hypeField[xi, yi + 1] = hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi, yi + 1));
-            hypeField[xi + 1, yi + 1] = hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi + 1, yi + 1));
-            hypeField[xi - 1, yi - 1] = hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi - 1, yi - 1));
-            hypeField[xi + 1, yi - 1] = hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi + 1, yi - 1));
-            hypeField[xi - 1, yi + 1] = hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi - 1, yi + 1));
+            hypeField[xi + 1, yi] += hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi + 1, yi));
+            hypeField[xi - 1, yi] += hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi - 1, yi));
+            hypeField[xi, yi - 1] += hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi, yi - 1));
+            hypeField[xi, yi + 1] += hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi, yi + 1));
+            hypeField[xi + 1, yi + 1] += hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi + 1, yi + 1));
+            hypeField[xi - 1, yi - 1] += hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi - 1, yi - 1));
+            hypeField[xi + 1, yi - 1] += hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi + 1, yi - 1));
+            hypeField[xi - 1, yi + 1] += hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi - 1, yi + 1));
         }
     }
 
@@ -96,14 +97,14 @@ public class Crowd : MonoBehaviour
             int xi = Mathf.RoundToInt(x);
             int yi = Mathf.RoundToInt(y);
 
-            moveField[xi + 1, yi] = Vector2.right * moveAmount;
-            moveField[xi - 1, yi] = Vector2.left * moveAmount;
-            moveField[xi, yi - 1] = Vector2.down * moveAmount;
-            moveField[xi, yi + 1] = Vector2.up * moveAmount;
-            moveField[xi + 1, yi + 1] = (Vector2.right + Vector2.up).normalized * moveAmount;
-            moveField[xi - 1, yi - 1] = (Vector2.left + Vector2.down) * moveAmount;
-            moveField[xi + 1, yi - 1] = (Vector2.right + Vector2.down) * moveAmount;
-            moveField[xi - 1, yi + 1] = (Vector2.left + Vector2.up) * moveAmount;
+            moveField[xi + 1, yi] += Vector2.right * moveAmount;
+            moveField[xi - 1, yi] += Vector2.left * moveAmount;
+            moveField[xi, yi - 1] += Vector2.down * moveAmount;
+            moveField[xi, yi + 1] += Vector2.up * moveAmount;
+            moveField[xi + 1, yi + 1] += (Vector2.right + Vector2.up).normalized * moveAmount;
+            moveField[xi - 1, yi - 1] += (Vector2.left + Vector2.down) * moveAmount;
+            moveField[xi + 1, yi - 1] += (Vector2.right + Vector2.down) * moveAmount;
+            moveField[xi - 1, yi + 1] += (Vector2.left + Vector2.up) * moveAmount;
 
         }
     }
@@ -122,18 +123,20 @@ public class Crowd : MonoBehaviour
             lastCrowdUpdate = Time.time;
 
             Vector2[,] newField = new Vector2[fieldSize, fieldSize];
+            Vector2[,] newHype = new Vector2[fieldSize, fieldSize];
 
             // iterate across the crowd field (except for the edges)
             for (int x = 1; x < fieldSize - 1; x++)
             {
                 for (int y = 1; y < fieldSize - 1; y++)
                 {
-                    hypeField[x, y] = Vector2.ClampMagnitude(hypeField[x, y] * hypeDecay, maxHype);
+                    newHype[x, y] += Vector2.ClampMagnitude(hypeField[x, y] * hypeDecay, maxHype);
 
                     if (x > 0 && x < fieldSize - 1 && y > 0 && y < fieldSize - 1)
                     {
                         Vector2 waveTransmission = moveField[x, y] * waveDecay * transmissionSpeed;
                         newField[x, y] += moveField[x, y] * waveDecay * (1 - transmissionSpeed);
+
                         // iterate across our 8 neighbors
                         for (int dx = -1; dx <= 1; dx++)
                         {
@@ -148,7 +151,14 @@ public class Crowd : MonoBehaviour
                                     {
                                         Vector2 specWaveTransmission = waveTransmission * Mathf.Pow(Mathf.InverseLerp(0, moveField[x, y].magnitude, dotproduct), 2);
                                         newField[x + dx, y + dy] += specWaveTransmission * (1 - Mathf.InverseLerp(0, maxHype, hypeField[x + dx, y + dy].magnitude));
-                                        //newField[x + (int)Mathf.Sign(hypeField[x + dx, y + dy].x), y + (int)Mathf.Sign(hypeField[x + dx, y + dy].y)] += waveTransmission * Mathf.InverseLerp(0, maxHype, hypeField[x + dx, y + dy].magnitude);
+                                        newField[x + (int)Mathf.Sign(hypeField[x + dx, y + dy].x), y + (int)Mathf.Sign(hypeField[x + dx, y + dy].y)] += hypeField[x + dx, y + dy].normalized * specWaveTransmission.magnitude * Mathf.InverseLerp(0, maxHype, hypeField[x + dx, y + dy].magnitude);
+                                    }
+
+                                    float hypedotproduct = Vector2.Dot(hypeField[x, y], new Vector2(dx, dy).normalized);
+                                    if (hypedotproduct > 0)
+                                    {
+                                        Vector2 hypeTransmission = hypeField[x, y] * hypeTransmissionDecay * Mathf.Pow(Mathf.InverseLerp(0, hypeField[x, y].magnitude, hypedotproduct), 1);
+                                        newHype[x + dx, y + dy] += hypeTransmission;
                                     }
                                 }
                             }
@@ -158,8 +168,9 @@ public class Crowd : MonoBehaviour
             }
 
             moveField = newField;
+            hypeField = newHype;
 
-            if(crowdUpdate != null)
+            if (crowdUpdate != null)
             {
                 crowdUpdate.Invoke();
             }
