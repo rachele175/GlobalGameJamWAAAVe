@@ -41,6 +41,11 @@ public class Crowd : MonoBehaviour
         }
     }
 
+    internal Vector2 GetCrowdPosition(float x, float z)
+    {
+        return new Vector2(x, z);
+    }
+
     public void AddHype(float x, float y, Vector2 hype)
     {
         if (x >= 1 && x <= fieldSize - 2 && y >= 1 && y <= fieldSize - 2)
@@ -90,12 +95,14 @@ public class Crowd : MonoBehaviour
         return Vector2.zero;
     }
 
-    public void AddMove(float x, float y, float moveAmount)
+    public void AddMove(float x, float y, float moveAmount, bool bias = false, float biasx = 0, float biasy = 0)
     {
         if (x >= 1 && x <= fieldSize - 2 && y >= 1 && y <= fieldSize - 2)
         {
             int xi = Mathf.RoundToInt(x);
             int yi = Mathf.RoundToInt(y);
+
+            //Vector2 
 
             moveField[xi + 1, yi] += Vector2.right * moveAmount;
             moveField[xi - 1, yi] += Vector2.left * moveAmount;
