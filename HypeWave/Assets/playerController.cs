@@ -7,7 +7,7 @@ public class player : MonoBehaviour {
 	Vector3 moveDirection;
 	public float speed;
 	public string controllerNumber;
-	//public songDisplayManager; //this is the fret board
+	public songDisplayManager myDisplay; //this is the fret board
 
 	void Start()
 	{
@@ -34,25 +34,25 @@ public class player : MonoBehaviour {
 		if (Input.GetButton(controllerNumber + "NoteBlue")) {
 			Debug.Log(controllerNumber + " pressed x");
 			//call rhythm game functions
-			//songDisplayManager.strikeNote(noteColor Red, Yellow, Blue, Orange);
+			myDisplay.strikeNote(noteColor.Blue);
 		}
 		//y = rhythm game
 		if (Input.GetButton(controllerNumber + "NoteYellow")) {
 			Debug.Log(controllerNumber + " pressed y");
-			//call rhythm game functions
-			//songDisplayManager.strikeNote(noteColor Red, Yellow, Blue, Orange);
-		}
-		//a = rhythm game
-		if (Input.GetButton(controllerNumber + "NoteOrange")) {
+            //call rhythm game functions
+            myDisplay.strikeNote(noteColor.Yellow);
+        }
+        //a = rhythm game
+        if (Input.GetButton(controllerNumber + "NoteOrange")) {
 			Debug.Log(controllerNumber + " pressed a");
-			//call rhythm game functions
-			//songDisplayManager.strikeNote(noteColor Red, Yellow, Blue, Orange);
-		}
-		//b = rhythm game
-		if (Input.GetButton(controllerNumber + "NoteRed")) {
+            //call rhythm game functions
+            myDisplay.strikeNote(noteColor.Orange);
+        }
+        //b = rhythm game
+        if (Input.GetButton(controllerNumber + "NoteRed")) {
 			Debug.Log(controllerNumber + " pressed b");
-			//call rhythm game functions
-			//songDisplayManager.strikeNote(noteColor Red, Yellow, Blue, Orange);
-		}
-	}
+            //call rhythm game functions
+            myDisplay.strikeNote(noteColor.Red);
+        }
+    }
 }
