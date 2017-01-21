@@ -41,11 +41,13 @@ public class CrowdPlayer : MonoBehaviour
     {
         crowd = Crowd.Instance;
         crowd.crowdUpdate += CrowdUpdate;
+
+        transform.position = new Vector3(crowd.respawnPoint.x, transform.position.y, crowd.respawnPoint.y);
     }
 
     public void CreateWave()
     {
-        if (!crowd.IsStage(crowdPosition.x, crowdPosition.y))
+        if (!dead && !crowd.IsStage(crowdPosition.x, crowdPosition.y))
         {
             // start a wave
             crowd.AddMove(crowdPosition.x, crowdPosition.y, waveSize);
