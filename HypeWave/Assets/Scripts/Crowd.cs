@@ -5,34 +5,42 @@ using UnityEngine;
 
 public class Crowd : MonoBehaviour
 {
-    public Transform crowdMemberPrefab;
+    public static Crowd Instance;
 
+    public CrowdMember crowdMemberPrefab;
     public int crowdSize = 20;
-    private Transform[,] crowdVis;
+    private CrowdMember[,] crowdVis;
+    public float transmissionSpeed = 0.8f;
 
     public int fieldSize = 20;
     public Vector2[,] moveField;
     public Vector2[,] hypeField;
-
     public float maxHype = 2;
+
+    public event Action crowdUpdate;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
         moveField = new Vector2[fieldSize, fieldSize];
         hypeField = new Vector2[fieldSize, fieldSize];
 
-        crowdVis = new Transform[crowdSize, crowdSize];
+        crowdVis = new CrowdMember[crowdSize, crowdSize];
         for (int x = 1; x < crowdSize - 1; x++)
         {
             for (int y = 1; y < crowdSize - 1; y++)
             {
                 crowdVis[x, y] = Instantiate(crowdMemberPrefab);
-                crowdVis[x, y].position = new Vector3(x, 0, y);
+                crowdVis[x, y].SetPosition(x, y);
             }
         }
     }
 
-    internal void AddHype(float x, float y, Vector2 hype)
+    public void AddHype(float x, float y, Vector2 hype)
     {
         if (x >= 1 && x <= fieldSize - 2 && y >= 1 && y <= fieldSize - 2)
         {
@@ -48,6 +56,21 @@ public class Crowd : MonoBehaviour
             hypeField[xi + 1, yi - 1] = hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi + 1, yi - 1));
             hypeField[xi - 1, yi + 1] = hype / Vector2.Distance(new Vector2(xi, yi), new Vector2(xi - 1, yi + 1));
         }
+    }
+
+    public Vector2 GetHype(float x, float y)
+    {
+        if (x >= 1 && x <= fieldSize - 2 && y >= 1 && y <= fieldSize - 2)
+        {
+            int x1 = Mathf.FloorToInt(x);
+            int x2 = Mathf.CeilToInt(x);
+            int y1 = Mathf.FloorToInt(y);
+            int y2 = Mathf.CeilToInt(y);
+            Vector2 horzLerp1 = Vector2.Lerp(hypeField[x1, y1], hypeField[x2, y1], x - x1);
+            Vector2 horzLerp2 = Vector2.Lerp(hypeField[x1, y2], hypeField[x2, y2], x - x1);
+            return Vector2.Lerp(horzLerp1, horzLerp2, y - y1);
+        }
+        return Vector2.zero;
     }
 
     // bilinear interpolation
@@ -109,6 +132,8 @@ public class Crowd : MonoBehaviour
 
                     if (x > 0 && x < fieldSize - 1 && y > 0 && y < fieldSize - 1)
                     {
+                        Vector2 waveTransmission = moveField[x, y] * waveDecay * transmissionSpeed;
+                        newField[x, y] += moveField[x, y] * waveDecay * (1 - transmissionSpeed);
                         // iterate across our 8 neighbors
                         for (int dx = -1; dx <= 1; dx++)
                         {
@@ -121,8 +146,8 @@ public class Crowd : MonoBehaviour
                                     float dotproduct = Vector2.Dot(moveField[x, y], new Vector2(dx, dy).normalized);
                                     if (dotproduct > 0)
                                     {
-                                        Vector2 waveTransmission = moveField[x, y] * Mathf.Pow(Mathf.InverseLerp(0, moveField[x, y].magnitude, dotproduct), 2) * waveDecay;
-                                        newField[x + dx, y + dy] += waveTransmission * (1 - Mathf.InverseLerp(0, maxHype, hypeField[x + dx, y + dy].magnitude));
+                                        Vector2 specWaveTransmission = waveTransmission * Mathf.Pow(Mathf.InverseLerp(0, moveField[x, y].magnitude, dotproduct), 2);
+                                        newField[x + dx, y + dy] += specWaveTransmission * (1 - Mathf.InverseLerp(0, maxHype, hypeField[x + dx, y + dy].magnitude));
                                         //newField[x + (int)Mathf.Sign(hypeField[x + dx, y + dy].x), y + (int)Mathf.Sign(hypeField[x + dx, y + dy].y)] += waveTransmission * Mathf.InverseLerp(0, maxHype, hypeField[x + dx, y + dy].magnitude);
                                     }
                                 }
@@ -134,16 +159,9 @@ public class Crowd : MonoBehaviour
 
             moveField = newField;
 
-            for (int x = 1; x < crowdSize - 1; x++)
+            if(crowdUpdate != null)
             {
-                for (int y = 1; y < crowdSize - 1; y++)
-                {
-                    crowdVis[x, y].position = new Vector3(
-                        crowdVis[x, y].position.x, 
-                        GetMove(x, y).magnitude, 
-                        crowdVis[x, y].position.z);
-                    crowdVis[x, y].GetComponent<Renderer>().material.color = new Color(hypeField[x, y].x, hypeField[x,y].y, 0);
-                }
+                crowdUpdate.Invoke();
             }
         }
     }
