@@ -70,14 +70,14 @@ public class CrowdPlayer : MonoBehaviour
                                     + speed * lastMove.y * Vector3.forward;
 
                 // die in a mosh pit
-                if (crowd.IsPit(crowdPosition.x, crowdPosition.y) && !invulnerableToPits)
+                if (crowd.IsPit(crowdPosition.x, crowdPosition.y) && !invulnerableToPits && !crowd.IsStage(crowdPosition.x, crowdPosition.y))
                 {
                     // death
                     Die();
                 }
 
                 // die if you fall off the edge
-                if (crowdPosition.x < 1 || crowdPosition.x > crowd.fieldSize - 1 || crowdPosition.y < 1 || crowdPosition.y > crowd.fieldSize - 1)
+                if (crowdPosition.x < 1 || crowdPosition.x > crowd.fieldSize - 2 || crowdPosition.y < 1 || crowdPosition.y > crowd.fieldSize - 2)
                 {
                     Die();
                 }
