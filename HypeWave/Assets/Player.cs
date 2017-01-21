@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public float hypeAmount = 2;
     public Crowd crowd;
 
-    public int inputNumber = 1;
+    public string inputNumber = "1";
     public bool debugInput = true;
 
     private void Update()
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
             if (Input.GetButton("Jump" + inputNumber))
             {
-                crowd.AddMove(transform.position.x, transform.position.z, hypeAmount);
+                crowd.AddMove(transform.position.x, transform.position.z, pushAmount);
             }
         }
 
