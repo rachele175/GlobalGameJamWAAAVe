@@ -53,28 +53,36 @@ public class Crowd : MonoBehaviour
     // bilinear interpolation
     public Vector2 GetMove(float x, float y)
     {
-        int x1 = Mathf.FloorToInt(x);
-        int x2 = Mathf.CeilToInt(x);
-        int y1 = Mathf.FloorToInt(y);
-        int y2 = Mathf.CeilToInt(y);
-        Vector2 horzLerp1 = Vector2.Lerp(moveField[x1, y1], moveField[x2, y1], x-x1);
-        Vector2 horzLerp2 = Vector2.Lerp(moveField[x1, y2], moveField[x2, y2], x-x1);
-        return Vector2.Lerp(horzLerp1, horzLerp2, y-y1);
+        if (x >= 1 && x <= fieldSize - 2 && y >= 1 && y <= fieldSize - 2)
+        {
+            int x1 = Mathf.FloorToInt(x);
+            int x2 = Mathf.CeilToInt(x);
+            int y1 = Mathf.FloorToInt(y);
+            int y2 = Mathf.CeilToInt(y);
+            Vector2 horzLerp1 = Vector2.Lerp(moveField[x1, y1], moveField[x2, y1], x - x1);
+            Vector2 horzLerp2 = Vector2.Lerp(moveField[x1, y2], moveField[x2, y2], x - x1);
+            return Vector2.Lerp(horzLerp1, horzLerp2, y - y1);
+        }
+        return Vector2.zero;
     }
 
     public void AddMove(float x, float y, float moveAmount)
     {
-        int xi = Mathf.RoundToInt(x);
-        int yi = Mathf.RoundToInt(y);
+        if (x >= 1 && x <= fieldSize - 2 && y >= 1 && y <= fieldSize - 2)
+        {
+            int xi = Mathf.RoundToInt(x);
+            int yi = Mathf.RoundToInt(y);
 
-        moveField[xi + 1, yi] = Vector2.right * moveAmount;
-        moveField[xi - 1, yi] = Vector2.left * moveAmount;
-        moveField[xi, yi - 1] = Vector2.down * moveAmount;
-        moveField[xi, yi + 1] = Vector2.up * moveAmount;
-        moveField[xi + 1, yi + 1] = (Vector2.right + Vector2.up).normalized * moveAmount;
-        moveField[xi - 1, yi - 1] = (Vector2.left + Vector2.down) * moveAmount;
-        moveField[xi + 1, yi - 1] = (Vector2.right + Vector2.down) * moveAmount;
-        moveField[xi - 1, yi + 1] = (Vector2.left + Vector2.up) * moveAmount;
+            moveField[xi + 1, yi] = Vector2.right * moveAmount;
+            moveField[xi - 1, yi] = Vector2.left * moveAmount;
+            moveField[xi, yi - 1] = Vector2.down * moveAmount;
+            moveField[xi, yi + 1] = Vector2.up * moveAmount;
+            moveField[xi + 1, yi + 1] = (Vector2.right + Vector2.up).normalized * moveAmount;
+            moveField[xi - 1, yi - 1] = (Vector2.left + Vector2.down) * moveAmount;
+            moveField[xi + 1, yi - 1] = (Vector2.right + Vector2.down) * moveAmount;
+            moveField[xi - 1, yi + 1] = (Vector2.left + Vector2.up) * moveAmount;
+
+        }
     }
 
     // how fast the move_wave decays in amplitude as it moves outward
@@ -113,7 +121,7 @@ public class Crowd : MonoBehaviour
                                     float dotproduct = Vector2.Dot(moveField[x, y], new Vector2(dx, dy).normalized);
                                     if (dotproduct > 0)
                                     {
-                                        Vector2 waveTransmission = moveField[x, y] * Mathf.InverseLerp(0, moveField[x, y].magnitude, dotproduct) * waveDecay;
+                                        Vector2 waveTransmission = moveField[x, y] * Mathf.Pow(Mathf.InverseLerp(0, moveField[x, y].magnitude, dotproduct), 2) * waveDecay;
                                         newField[x + dx, y + dy] += waveTransmission * (1 - Mathf.InverseLerp(0, maxHype, hypeField[x + dx, y + dy].magnitude));
                                         //newField[x + (int)Mathf.Sign(hypeField[x + dx, y + dy].x), y + (int)Mathf.Sign(hypeField[x + dx, y + dy].y)] += waveTransmission * Mathf.InverseLerp(0, maxHype, hypeField[x + dx, y + dy].magnitude);
                                     }
@@ -132,7 +140,7 @@ public class Crowd : MonoBehaviour
                 {
                     crowdVis[x, y].position = new Vector3(
                         crowdVis[x, y].position.x, 
-                        GetMove(x, y).magnitude * 4, 
+                        GetMove(x, y).magnitude, 
                         crowdVis[x, y].position.z);
                     crowdVis[x, y].GetComponent<Renderer>().material.color = new Color(hypeField[x, y].x, hypeField[x,y].y, 0);
                 }
