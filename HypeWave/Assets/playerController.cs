@@ -5,15 +5,17 @@ using UnityEngine;
 public class playerController : MonoBehaviour {
 
 	Vector3 moveDirection;
-	public float speed;
 	public string controllerNumber;
 	public songDisplayManager myDisplay; //this is the fret board
+
     bool strummed;
 
    // public songDisplayManager songDisplayManagerPrefab;
 
-    public CrowdPlayer crowdPlayerPrefab;
-    public CrowdPlayer crowdPlayerInstance; //this is the player object in the crowd
+
+    public CrowdPlayer crowdPlayer; //this is the player object in the crowd
+
+    public Renderer debugRenderer;
 
     bool whitePressed;
     bool redPressed;
@@ -25,25 +27,21 @@ public class playerController : MonoBehaviour {
 		Debug.Log(controllerNumber);
         strummed = false;
         //songDisplayManagerInstance = Instantiate(songDisplayManagerPrefab);
+        //myDisplay = Instantiate(songDisplayManagerPrefab);
+        crowdPlayer.controller = this;
 
     }
 
 	void Update()
 	{
-		moveDirection = new Vector3 (Input.GetAxis("j" + controllerNumber + "Horizontal") * speed, 
-			0f, Input.GetAxis("j" + controllerNumber + "Vertical") * -speed);
-		transform.Translate(moveDirection * Time.deltaTime);
+
 
 		//use the wave with rb
 		if (Input.GetButton("j" + controllerNumber + "Wave")) {
 			Debug.Log("j" + controllerNumber + " pressed rb");
-			//call wave function
-		}
-		//use mosh pit with lb
-		if (Input.GetButton("j" + controllerNumber + "MoshPit")) {
-			Debug.Log("j" + controllerNumber + " pressed lb");
-			//call mosh pit function
-		}
+            //call wave function
+            crowdPlayer.CreateWave();
+        }
 
         //Use THE STRUM BAR
         if(Input.GetAxis("j" + controllerNumber + "Strum") >= .95)
@@ -81,6 +79,7 @@ public class playerController : MonoBehaviour {
         }
 
 		//x = rhythm game
+
 		if (Input.GetButton("j" + controllerNumber + "NoteWhite")) {
 			Debug.Log("j" + controllerNumber + " pressed RB");
 			//call rhythm game functions
@@ -134,8 +133,24 @@ public class playerController : MonoBehaviour {
         {
             myDisplay.releaseFret(noteColor.Red);
             redPressed = false;
-
-
         }
+    }
+
+    public Vector2 GetInput()
+    {
+        return Vector3.right * Input.GetAxis(controllerNumber + "Horizontal") + Vector3.up * Input.GetAxis(controllerNumber + "Vertical");
+    }
+
+
+    public void PlayerDied()
+    {
+        // TODO
+        debugRenderer.enabled = false;
+    }
+
+    public void PlayerRespawned()
+    {
+        // TODO
+        debugRenderer.enabled = true;
     }
 }
