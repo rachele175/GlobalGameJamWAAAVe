@@ -7,12 +7,23 @@ public class player : MonoBehaviour {
 	Vector3 moveDirection;
 	public float speed;
 	public string controllerNumber;
+<<<<<<< HEAD
 	public songDisplayManager myDisplay; //this is the fret board
+=======
+>>>>>>> origin/master
 
-	void Start()
+    public songDisplayManager songDisplayManagerPrefab;
+
+    public CrowdPlayer crowdPlayerPrefab;
+    public CrowdPlayer crowdPlayerInstance; //this is the player object in the crowd
+
+    void Start()
 	{
 		Debug.Log(controllerNumber);
-	}
+
+        songDisplayManagerInstance = Instantiate(songDisplayManagerPrefab);
+
+    }
 
 	void Update()
 	{
