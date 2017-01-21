@@ -19,9 +19,16 @@ public class noteKillZone : MonoBehaviour {
     {
         if (collision.gameObject.tag == "note")
         {
-            Destroy(collision.gameObject);
-            myMang.hypeNumber -= 1;
+            if (myMang.hypeNumber > -3)
+            {
+                myMang.hypeNumber -= 1;
+            }
+            else
+            {
+                myMang.killPlayer();
+            }
             myMang.breakCombo();
+            Destroy(collision.gameObject, 0.1f);
         }
     }
 }

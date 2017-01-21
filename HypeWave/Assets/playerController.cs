@@ -2,68 +2,140 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player : MonoBehaviour {
+public class playerController : MonoBehaviour {
 
 	Vector3 moveDirection;
 	public float speed;
 	public string controllerNumber;
-<<<<<<< HEAD
 	public songDisplayManager myDisplay; //this is the fret board
-=======
->>>>>>> origin/master
+    bool strummed;
 
-    public songDisplayManager songDisplayManagerPrefab;
+   // public songDisplayManager songDisplayManagerPrefab;
 
     public CrowdPlayer crowdPlayerPrefab;
     public CrowdPlayer crowdPlayerInstance; //this is the player object in the crowd
 
+    bool whitePressed;
+    bool redPressed;
+    bool greenPressed;
+    bool yellowPressed;
+
     void Start()
 	{
 		Debug.Log(controllerNumber);
-
-        songDisplayManagerInstance = Instantiate(songDisplayManagerPrefab);
+        strummed = false;
+        //songDisplayManagerInstance = Instantiate(songDisplayManagerPrefab);
 
     }
 
 	void Update()
 	{
-		moveDirection = new Vector3 (Input.GetAxis(controllerNumber + "Horizontal") * speed, 
-			0f, Input.GetAxis(controllerNumber + "Vertical") * -speed);
+		moveDirection = new Vector3 (Input.GetAxis("j" + controllerNumber + "Horizontal") * speed, 
+			0f, Input.GetAxis("j" + controllerNumber + "Vertical") * -speed);
 		transform.Translate(moveDirection * Time.deltaTime);
 
 		//use the wave with rb
-		if (Input.GetButton(controllerNumber + "Wave")) {
-			Debug.Log(controllerNumber + " pressed rb");
+		if (Input.GetButton("j" + controllerNumber + "Wave")) {
+			Debug.Log("j" + controllerNumber + " pressed rb");
 			//call wave function
 		}
 		//use mosh pit with lb
-		if (Input.GetButton(controllerNumber + "MoshPit")) {
-			Debug.Log(controllerNumber + " pressed lb");
+		if (Input.GetButton("j" + controllerNumber + "MoshPit")) {
+			Debug.Log("j" + controllerNumber + " pressed lb");
 			//call mosh pit function
 		}
+
+        //Use THE STRUM BAR
+        if(Input.GetAxis("j" + controllerNumber + "Strum") >= .95)
+        {
+            if (!strummed)
+            {
+                Debug.Log("j" + controllerNumber + " pressed STRUM");
+                myDisplay.strumFeedback();
+                if (whitePressed)
+                {
+                    myDisplay.strikeNote(noteColor.White);
+
+                }
+                if (redPressed)
+                {
+                    myDisplay.strikeNote(noteColor.Red);
+
+                }
+                if (yellowPressed)
+                {
+                    myDisplay.strikeNote(noteColor.Yellow);
+
+                }
+                if (greenPressed)
+                {
+                    myDisplay.strikeNote(noteColor.Green);
+
+                }
+                strummed = true;
+            }
+        }
+        else
+        {
+            strummed = false;
+        }
+
 		//x = rhythm game
-		if (Input.GetButton(controllerNumber + "NoteBlue")) {
-			Debug.Log(controllerNumber + " pressed x");
+		if (Input.GetButton("j" + controllerNumber + "NoteWhite")) {
+			Debug.Log("j" + controllerNumber + " pressed RB");
 			//call rhythm game functions
-			myDisplay.strikeNote(noteColor.Blue);
-		}
-		//y = rhythm game
-		if (Input.GetButton(controllerNumber + "NoteYellow")) {
-			Debug.Log(controllerNumber + " pressed y");
+            myDisplay.pressFret(noteColor.White);
+            whitePressed = true;
+
+        }
+        else
+        {
+            myDisplay.releaseFret(noteColor.White);
+            whitePressed = false;
+
+        }
+
+        //y = rhythm game
+        if (Input.GetButton("j" + controllerNumber + "NoteYellow")) {
+			Debug.Log("j" + controllerNumber + " pressed y");
             //call rhythm game functions
-            myDisplay.strikeNote(noteColor.Yellow);
+            yellowPressed = true;
+            myDisplay.pressFret(noteColor.Yellow);
+        }
+        else
+        {
+            myDisplay.releaseFret(noteColor.Yellow);
+            yellowPressed = false;
+
         }
         //a = rhythm game
-        if (Input.GetButton(controllerNumber + "NoteOrange")) {
-			Debug.Log(controllerNumber + " pressed a");
+        if (Input.GetButton("j" + controllerNumber + "NoteGreen")) {
+			Debug.Log("j" + controllerNumber + " pressed A");
             //call rhythm game functions
-            myDisplay.strikeNote(noteColor.Orange);
+            myDisplay.pressFret(noteColor.Green);
+            greenPressed = true;
+
+        }
+        else
+        {
+            myDisplay.releaseFret(noteColor.Green);
+            greenPressed = false;
+
         }
         //b = rhythm game
-        if (Input.GetButton(controllerNumber + "NoteRed")) {
-			Debug.Log(controllerNumber + " pressed b");
+        if (Input.GetButton("j" + controllerNumber + "NoteRed")) {
+			Debug.Log("j" + controllerNumber + " pressed B");
             //call rhythm game functions
-            myDisplay.strikeNote(noteColor.Red);
+            myDisplay.pressFret(noteColor.Red);
+            redPressed = true;
+
+        }
+        else
+        {
+            myDisplay.releaseFret(noteColor.Red);
+            redPressed = false;
+
+
         }
     }
 }

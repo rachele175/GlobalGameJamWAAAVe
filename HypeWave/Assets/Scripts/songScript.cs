@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum noteColor { Red, Blue, Orange, Yellow };
+public enum noteColor { White, Yellow, Red, Green };
 
 public class songScript : MonoBehaviour {
 
