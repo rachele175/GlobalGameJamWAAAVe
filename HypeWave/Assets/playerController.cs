@@ -33,7 +33,7 @@ public class playerController : MonoBehaviour {
 
 	void Update()
 	{
-        myDisplay.transform.position = transform.position + Vector3.right * 1 + Vector3.forward * 1;
+        myDisplay.transform.position = transform.position + Vector3.right * 2 + Vector3.forward * 2;
 
 
         //use the wave with rb
