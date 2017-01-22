@@ -58,8 +58,7 @@ public class songDisplayManager : MonoBehaviour {
         comboTracker.text = "x" + combo;
         hypeRunner();
 
-        //transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime / 0.4f);
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, 10 * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime / 0.3f);
 	}
 
     public void spawnNote(noteColor g){
@@ -214,7 +213,10 @@ public class songDisplayManager : MonoBehaviour {
     public void killPlayer()
     {
         hypeNumber = 0;
-        noMoreHype();
+        if (noMoreHype != null)
+        {
+            noMoreHype();
+        }
     }
 
     public void assignPlayerID(string playerID)

@@ -5,6 +5,8 @@ using System.IO;
 
 public class playerController : MonoBehaviour {
     List<float> strumTestTimes= new List<float>();
+    List<int> noteTests = new List<int>();
+    private string filename;
     public bool creatingSong;
 	Vector3 moveDirection;
 	public int controllerNumber;
@@ -33,8 +35,12 @@ public class playerController : MonoBehaviour {
         myDisplay.assignPlayerID("j" + controllerNumber);
         crowdPlayer.controller = this;
 
-        myDisplay.noMoreHype += crowdPlayer.Die;
+        if (!creatingSong)
+        {
+            myDisplay.noMoreHype += crowdPlayer.Die;
+        }
 
+        filename = FindObjectOfType<songScript>().fileName;
     }
 
 	void Update()
@@ -88,9 +94,30 @@ public class playerController : MonoBehaviour {
 
                 if (creatingSong)
                 {
-                    strumTestTimes.Add(Time.time);
+                    int note = 3;
+                    if(whitePressed)
+                    {
+                        note = 0;
+                    }
+                    if (redPressed)
+                    {
+                        note = 2;
+                    }
+                    if (yellowPressed)
+                    {
+                        note = 1;
+                    }
+                    if (greenPressed)
+                    {
+                        note = 3;
+                    }
+                    if (note >= 0)
+                    {
+                        strumTestTimes.Add(Time.time);
+                        noteTests.Add(note);
+                    }
                 }
-
+                
                 myDisplay.strumFeedback();
                 if (whitePressed)
                 {
@@ -208,10 +235,10 @@ public class playerController : MonoBehaviour {
     {
         if (creatingSong)
         {
-            var sr = File.CreateText(FindObjectOfType<songScript>().fileName);
-            foreach (float f in strumTestTimes)
+            var sr = File.CreateText(filename);
+            for (int i = 0; i < strumTestTimes.Count; i++)
             {
-                sr.WriteLine("" + f + " 0");
+                sr.WriteLine("" + strumTestTimes[i] + " " + noteTests[i]);
             }
             sr.Close();
         }

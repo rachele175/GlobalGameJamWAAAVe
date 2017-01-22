@@ -24,25 +24,29 @@ public class songScript : MonoBehaviour {
 
     private List<float> noteTimes= new List<float>();
 
+    public bool playSong = true;
 
 	// Use this for initialization
 	void Start () {
         noteCount = 0;
         timeStamp = 0;
 
-        StreamReader file = new StreamReader("FreeBirdRecord.txt");
-
-        while (!file.EndOfStream)
+        if (playSong)
         {
-            Debug.Log("attempted");
-            string line = file.ReadLine();
-            // Do Something with the input.
-            string[] nums = line.Split(' ');
-            noteTimes.Add(float.Parse(nums[0]));
-            notesList.Add((noteColor)int.Parse(nums[1]));
-        }
+            StreamReader file = new StreamReader("FreeBirdRecord.txt");
 
-        file.Close();
+            while (!file.EndOfStream)
+            {
+                Debug.Log("attempted");
+                string line = file.ReadLine();
+                // Do Something with the input.
+                string[] nums = line.Split(' ');
+                noteTimes.Add(float.Parse(nums[0]));
+                notesList.Add((noteColor)int.Parse(nums[1]));
+            }
+
+            file.Close();
+        }
 
     }
 	
