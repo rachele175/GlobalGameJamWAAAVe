@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class CrowdMember : MonoBehaviour
 {
+	Animator animator;
     private Crowd crowd;
     private Vector2 crowdPos;
+    public float hypeLevel;
 
     private float pitEndsTime;
 
@@ -29,7 +31,11 @@ public class CrowdMember : MonoBehaviour
                             transform.position.x,
                             crowd.GetMove(crowdPos.x, crowdPos.y).magnitude,
                             transform.position.z);
-            Vector2 hype = crowd.GetHype(crowdPos.x, crowdPos.y);
+            Vector2 hype = crowd.GetHype(crowdPos.x, crowdPos.y); //magnitude of this vector is the hype
+                                                                  //float of hype
+            hypeLevel = hype.magnitude;
+            //set the animator float that governs the blend tree of how hype each member is
+            if (animator) animator.SetFloat("HypeLevel", hypeLevel);
             GetComponent<Renderer>().material.color = new Color(hype.x, hype.y, 0);
         }
     }

@@ -27,6 +27,7 @@ public class playerController : MonoBehaviour {
 		Debug.Log(controllerNumber);
         strummed = false;
         myDisplay = Instantiate(songDisplayManagerPrefab);
+        myDisplay.assignPlayerID(controllerNumber);
         crowdPlayer.controller = this;
 
         myDisplay.noMoreHype += crowdPlayer.Die;
@@ -44,7 +45,7 @@ public class playerController : MonoBehaviour {
             crowdPlayer.CreateWave();
         }
 
-        //Use THE STRUM BAR
+        //Use THE STRUM BAR with RB
         if(Input.GetAxis(controllerNumber + "Strum") >= .95)
         {
             if (!strummed)
@@ -79,8 +80,7 @@ public class playerController : MonoBehaviour {
             strummed = false;
         }
 
-		//x = rhythm game
-
+		//RB = rhythm game
 		if (Input.GetButton(controllerNumber + "NoteWhite")) {
 			Debug.Log(controllerNumber + " pressed RB");
 			//call rhythm game functions
@@ -95,7 +95,7 @@ public class playerController : MonoBehaviour {
 
         }
 
-        //y = rhythm game
+        //Y = rhythm game
         if (Input.GetButton(controllerNumber + "NoteYellow")) {
 			Debug.Log(controllerNumber + " pressed y");
             //call rhythm game functions
@@ -108,7 +108,8 @@ public class playerController : MonoBehaviour {
             yellowPressed = false;
 
         }
-        //a = rhythm game
+
+        //A = rhythm game
         if (Input.GetButton(controllerNumber + "NoteGreen")) {
 			Debug.Log(controllerNumber + " pressed A");
             //call rhythm game functions
@@ -122,7 +123,8 @@ public class playerController : MonoBehaviour {
             greenPressed = false;
 
         }
-        //b = rhythm game
+
+        //B = rhythm game
         if (Input.GetButton(controllerNumber + "NoteRed")) {
 			Debug.Log(controllerNumber + " pressed B");
             //call rhythm game functions

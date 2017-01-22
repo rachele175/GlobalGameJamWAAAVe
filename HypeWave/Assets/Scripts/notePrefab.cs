@@ -6,7 +6,7 @@ public class notePrefab : MonoBehaviour {
     float noteSpeed = -.02f;
     noteColor myColor;
     songDisplayManager myManager;
-
+    public string playerID;
 	// Use this for initialization
 	void Start () {
 		
@@ -17,10 +17,11 @@ public class notePrefab : MonoBehaviour {
         transform.Translate(new Vector3(noteSpeed, 0f, 0f));
 	}
 
-    public void setUp(noteColor g, songDisplayManager manage)
+    public void setUp(noteColor g, songDisplayManager manage, string playerNum)
     {
         myColor = g;
         myManager = manage;
+        playerID = playerNum;
     }
 
     public noteColor getMyColor()
