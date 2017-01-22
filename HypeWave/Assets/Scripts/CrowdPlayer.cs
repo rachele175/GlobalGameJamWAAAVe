@@ -39,12 +39,14 @@ public class CrowdPlayer : MonoBehaviour
 
     private Vector2 crowdPosition;
 
+    public GameObject respawn;
+
     private void Start()
     {
         crowd = Crowd.Instance;
         crowd.crowdUpdate += CrowdUpdate;
 
-        transform.position = new Vector3(crowd.respawnPoint.x, transform.position.y, crowd.respawnPoint.y);
+        transform.position = respawn.transform.position;
     }
 
     public void CreateWave()
@@ -95,7 +97,7 @@ public class CrowdPlayer : MonoBehaviour
                 //respawn
                 dead = false;
                 controller.PlayerRespawned();
-                transform.position = new Vector3(crowd.respawnPoint.x, transform.position.y, crowd.respawnPoint.y);
+                transform.position = respawn.transform.position;
             }
         }
     }
