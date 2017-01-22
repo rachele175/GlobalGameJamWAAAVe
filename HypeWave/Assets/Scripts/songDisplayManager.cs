@@ -46,6 +46,7 @@ public class songDisplayManager : MonoBehaviour {
     Color original;
 
     string playerNum;
+    SpriteRenderer backgroundSpite;
     // Use this for initialization
     void Start () {
         internalMaxHype = hypeRequiredForWave*3;
@@ -213,6 +214,7 @@ public class songDisplayManager : MonoBehaviour {
     public void killPlayer()
     {
         hypeNumber = 0;
+  
         if (noMoreHype != null)
         {
             noMoreHype();
@@ -228,4 +230,11 @@ public class songDisplayManager : MonoBehaviour {
     {
         return playerNum;
     }
+
+    public void setTransparency(float myT)
+    {
+        backgroundSpite.color = new Color32((byte)backgroundSpite.color.r, (byte)backgroundSpite.color.g, (byte)backgroundSpite.color.b, (byte)myT);
+    }
+
+
 }
