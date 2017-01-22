@@ -62,6 +62,7 @@ public class Crowd : MonoBehaviour
             {
                 crowdVis[x, y] = Instantiate(crowdMemberPrefab);
                 crowdVis[x, y].SetPosition(x, y);
+                crowdVis[x, y].transform.SetParent(this.transform);
             }
         }
 

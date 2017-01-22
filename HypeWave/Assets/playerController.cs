@@ -27,17 +27,17 @@ public class playerController : MonoBehaviour {
 		Debug.Log(controllerNumber);
         strummed = false;
         myDisplay = Instantiate(songDisplayManagerPrefab);
-        myDisplay.transform.position = Vector3.right * 10 + Vector3.forward * 10;
         crowdPlayer.controller = this;
 
     }
 
 	void Update()
 	{
+        myDisplay.transform.position = transform.position + Vector3.right * 1 + Vector3.forward * 1;
 
 
-		//use the wave with rb
-		if (Input.GetButton(controllerNumber + "Wave")) {
+        //use the wave with rb
+        if (Input.GetButton(controllerNumber + "Wave")) {
 			Debug.Log(controllerNumber + " pressed rb");
             //call wave function
             crowdPlayer.CreateWave();
