@@ -18,7 +18,7 @@ public class CrowdMember : MonoBehaviour
     {
         crowd = Crowd.Instance;
         int i = UnityEngine.Random.Range(0,visuals.Length);
-        Instantiate(visuals[i], gameObject); 
+        //Instantiate(visuals[i], gameObject); 
         crowd.crowdUpdate += UpdateState;
         crowd.pitStart += PitStarts;
     }
