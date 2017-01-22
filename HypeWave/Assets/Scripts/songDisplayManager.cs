@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class songDisplayManager : MonoBehaviour {
 
-    public int playerNum;
+
     public int hypeNumber;
     public TextMesh comboTracker;
 
@@ -37,6 +37,8 @@ public class songDisplayManager : MonoBehaviour {
 
     public GameObject strumBar;
     Color original;
+
+    string playerNum;
     // Use this for initialization
     void Start () {
         maxHype = hypeRequiredForWave*3;
@@ -53,7 +55,7 @@ public class songDisplayManager : MonoBehaviour {
     public void spawnNote(noteColor g){
         GameObject currentNote = Instantiate(notePrefab, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0), noteContainer.transform);
         notePrefab noteScript=currentNote.GetComponent<notePrefab>();
-        noteScript.setUp(g, this);
+        noteScript.setUp(g, this, playerNum);
         moveNote(noteScript, g);
     }
 
@@ -199,5 +201,15 @@ public class songDisplayManager : MonoBehaviour {
     public void killPlayer()
     {
 
+    }
+
+    public void assignPlayerID(string playerID)
+    {
+        playerNum = playerID;
+    }
+
+    public string getPlayerID()
+    {
+        return playerNum;
     }
 }

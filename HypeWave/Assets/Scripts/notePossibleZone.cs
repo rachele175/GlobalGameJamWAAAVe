@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class notePossibleZone : MonoBehaviour {
     public List<GameObject> strummableNotes;
+    public songDisplayManager myMang;
     // Use this for initialization
     void Start () {
 		
@@ -18,7 +19,10 @@ public class notePossibleZone : MonoBehaviour {
     {
         if (collider.gameObject.tag == "note")
         {
-            strummableNotes.Add(collider.gameObject);
+            if (myMang.getPlayerID() == collider.gameObject.GetComponent<notePrefab>().playerID)
+            {
+                strummableNotes.Add(collider.gameObject);
+            }
         }
     }
 
@@ -26,7 +30,10 @@ public class notePossibleZone : MonoBehaviour {
     {
         if (other.gameObject.tag == "note")
         {
-            strummableNotes.Remove(other.gameObject);
+            if (myMang.getPlayerID() == other.gameObject.GetComponent<notePrefab>().playerID)
+            {
+                strummableNotes.Remove(other.gameObject);
+            }
         }
     }
 }
