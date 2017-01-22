@@ -9,6 +9,7 @@ public class CrowdMember : MonoBehaviour
     private Crowd crowd;
     private Vector2 crowdPos;
     public float hypeLevel;
+    public float maxHype = 2;
 
     public GameObject[] visuals;
 
@@ -33,6 +34,7 @@ public class CrowdMember : MonoBehaviour
         vis.transform.rotation = Quaternion.AngleAxis(40f, Vector3.right);
         crowd.crowdUpdate += UpdateState;
         crowd.pitStart += PitStarts;
+        animator = vis.GetComponent<Animator>();
     }
 
 
@@ -53,33 +55,35 @@ public class CrowdMember : MonoBehaviour
                                                                   //float of hype
             hypeLevel = hype.magnitude;
             //set the animator float that governs the blend tree of how hype each member is
-            if (animator) animator.SetFloat("HypeLevel", hypeLevel);
+            //if (animator) animator.SetFloat("HypeLevel", hypeLevel);
             GetComponent<Renderer>().material.color = new Color(hype.x, hype.y, 0);
         }
 
-        if(Time.time - lastRelocate > relocatePeriod)
+        float hypeLerp = Mathf.Sqrt(hypeLevel / maxHype);
+
+        if (Time.time - lastRelocate > relocatePeriod * Mathf.Lerp(1, 0.1f, hypeLerp))
         {
             lastRelocate = Time.time;
             float deviation1 = 0;
+                deviation1 += UnityEngine.Random.Range(0f,1f);
             float deviation2= 0;
-            int n = 100;
+            int n = 10;
             for(int i = 0; i < n; i ++)
             {
-                deviation1 += UnityEngine.Random.Range(0f,1f);
-                deviation2 += UnityEngine.Random.Range(0f,1f);
+                deviation2 += UnityEngine.Random.Range(-1f,1f);
             }
-            deviation1 = deviation1 / n;
+            //deviation1 = deviation1 / n;
             deviation2 = deviation2 / n;
 
-            relocateTarget = centerPosition + Quaternion.AngleAxis(360 * deviation1, Vector3.up) * Vector3.right + deviation2 * Vector3.right;
+            relocateTarget = centerPosition + Mathf.Lerp(0.5f, 1f, hypeLerp) * (Quaternion.AngleAxis(360 * deviation1, Vector3.up) * Vector3.right * Mathf.Lerp(1, 1f, hypeLerp) + deviation2 * Vector3.right * Mathf.Lerp(1, 1f, hypeLerp));
             //relocateTarget = centerPosition + deviation1 * Vector3.right + deviation2 * Vector3.forward;
 
             
         }
 
-        relocateTarget = new Vector3(relocateTarget.x, crowd.GetMove(crowdPos.x, crowdPos.y).magnitude * 1.15f, relocateTarget.z);
 
-        transform.position = Vector3.Lerp(transform.position, relocateTarget, Time.deltaTime / 0.2f);
+        transform.position = Vector3.Lerp(transform.position, relocateTarget, Time.deltaTime / Mathf.Lerp(0.2f,0.02f, hypeLerp));
+        transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, crowd.GetMove(crowdPos.x, crowdPos.y).magnitude * 2f * Mathf.Lerp(1, 1.5f, hypeLerp), Time.deltaTime/0.03f), transform.position.z);
 
     }
 
