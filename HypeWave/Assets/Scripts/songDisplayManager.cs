@@ -50,11 +50,19 @@ public class songDisplayManager : MonoBehaviour {
 
     public SpriteRenderer backgroundSprite;
     public List<SpriteRenderer> uiItems;
+
+
+    public GameObject fretBoard;
+    public Sprite fretPurp;
+    public Sprite fretGreen;
+    public Sprite fretOrange;
+    public Sprite fretPink;
+
     // Use this for initialization
     void Start () {
         internalMaxHype = hypeRequiredForWave*3;
         original = strumBar.GetComponent<Renderer>().material.color;
-
+        assignFretBoard();
     }
 	
 	// Update is called once per frame
@@ -105,7 +113,10 @@ public class songDisplayManager : MonoBehaviour {
         foreach(GameObject d in deleteNotes)
         {
             myNoteZone.strummableNotes.Remove(d);
-            d.GetComponent<notePrefab>().explode();
+            if (!isKOd)
+            {
+                d.GetComponent<notePrefab>().explode();
+            }
             Destroy(d, 0.2f);
         }
         
@@ -294,5 +305,24 @@ public class songDisplayManager : MonoBehaviour {
         }
     }
 
+    public void assignFretBoard()
+    {
+        if(playerNum== "j1")
+        {
+            fretBoard.GetComponent<SpriteRenderer>().sprite = fretGreen;
+        }
+        else if (playerNum == "j2")
+        {
+            fretBoard.GetComponent<SpriteRenderer>().sprite = fretOrange;
+        }
+        else if (playerNum == "j3")
+        {
+            fretBoard.GetComponent<SpriteRenderer>().sprite = fretPurp;
+        }
+        else if (playerNum == "j4")
+        {
+            fretBoard.GetComponent<SpriteRenderer>().sprite = fretPink;
+        }
+    }
 
 }

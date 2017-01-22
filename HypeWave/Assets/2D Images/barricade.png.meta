@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 071be3bb1fa47424a9cfc4cff67d2caf
-timeCreated: 1485124280
+guid: 44e8c798ba24a5e47a793ad400676199
+timeCreated: 1485120625
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: spotlightmaybe_0
-    21300002: spotlightmaybe_1
+    21300000: barricade_0
+    21300002: barricade_1
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -88,26 +88,26 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spotlightmaybe_0
+      name: barricade_0
       rect:
         serializedVersion: 2
-        x: 766
-        y: 745
-        width: 1414
-        height: 2042
-      alignment: 9
-      pivot: {x: 0.18396652, y: 0.06729356}
+        x: 101
+        y: 22
+        width: 816
+        height: 2711
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: spotlightmaybe_1
+      name: barricade_1
       rect:
         serializedVersion: 2
-        x: 538
-        y: 281
-        width: 510
-        height: 303
+        x: 1603
+        y: 325
+        width: 398
+        height: 1283
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
