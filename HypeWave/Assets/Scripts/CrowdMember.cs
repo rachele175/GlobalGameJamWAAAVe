@@ -10,11 +10,15 @@ public class CrowdMember : MonoBehaviour
     private Vector2 crowdPos;
     public float hypeLevel;
 
+    public GameObject[] visuals;
+
     private float pitEndsTime;
 
     private void Start()
     {
         crowd = Crowd.Instance;
+        int i = UnityEngine.Random.Range(0,visuals.Length);
+        Instantiate(visuals[i], gameObject); 
         crowd.crowdUpdate += UpdateState;
         crowd.pitStart += PitStarts;
     }
