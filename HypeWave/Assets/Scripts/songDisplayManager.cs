@@ -148,19 +148,19 @@ public class songDisplayManager : MonoBehaviour {
     {
         if (c == noteColor.White)
         {
-            whiteF.press();
+            whiteF.press(c);
         }
         else if (c == noteColor.Yellow)
         {
-            yellowF.press();
+            yellowF.press(c);
         }
         else if (c == noteColor.Red)
         {
-            redF.press();
+            redF.press(c);
         }
         else if (c == noteColor.Green)
         {
-            greenF.press();
+            greenF.press(c);
         }
     }
 
