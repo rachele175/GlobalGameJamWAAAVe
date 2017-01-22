@@ -317,11 +317,11 @@ public class songDisplayManager : MonoBehaviour {
         }
         else if (playerNum == "j3")
         {
-            fretBoard.GetComponent<SpriteRenderer>().sprite = fretPink;
+            fretBoard.GetComponent<SpriteRenderer>().sprite = fretPurp;
         }
         else if (playerNum == "j4")
         {
-            fretBoard.GetComponent<SpriteRenderer>().sprite = fretPurp;
+            fretBoard.GetComponent<SpriteRenderer>().sprite = fretPink;
         }
     }
 

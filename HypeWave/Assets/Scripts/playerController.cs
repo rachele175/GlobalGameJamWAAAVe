@@ -32,6 +32,9 @@ public class playerController : MonoBehaviour {
     bool greenPressed;
     bool yellowPressed;
 
+    public Spotlight spotlightPrefab;
+    private Spotlight spotlight;
+
     public bool isKOd;
     void Start()
 	{
@@ -46,6 +49,9 @@ public class playerController : MonoBehaviour {
 		myCharacter.transform.SetParent(gameObject.transform);
 		myCharacter.transform.localPosition = Vector3.zero; //do I need to do this part?
 		myCharacter.transform.rotation = Quaternion.AngleAxis(40f, Vector3.right);
+
+        spotlight = Instantiate(spotlightPrefab);
+        spotlight.target = this.transform;
 
         if (!creatingSong)
         {
@@ -300,6 +306,7 @@ public class playerController : MonoBehaviour {
         myDisplay.isKOd = isKOd;
         myCharacter.GetComponent<SpriteRenderer>().enabled = false;
         myDisplay.dissappear();
+        spotlight.gameObject.SetActive(false);
     }
 
     public void PlayerRespawned()
@@ -310,6 +317,7 @@ public class playerController : MonoBehaviour {
 		myCharacter.GetComponent<SpriteRenderer>().enabled = true;
         myDisplay.hypeNumber=0;
         myDisplay.reAppear();
+        spotlight.gameObject.SetActive(true);
     }
 
     public songDisplayManager getManager()
