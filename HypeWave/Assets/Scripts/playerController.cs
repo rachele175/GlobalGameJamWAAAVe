@@ -41,10 +41,12 @@ public class playerController : MonoBehaviour {
         }
 
         filename = FindObjectOfType<songScript>().fileName;
+
+        SetDisplayPos(true);
     }
 
-	void Update()
-	{
+    private void SetDisplayPos(bool snap)
+    {
         /*
         Vector3 outward = (myScreenPosition - center).normalized;
         */
@@ -62,17 +64,56 @@ public class playerController : MonoBehaviour {
         float x = Mathf.Clamp(Mathf.Cos(angle) * Screen.width + Screen.width / 2, 0.0f, Screen.width);
         float y = Mathf.Clamp(Mathf.Sin(angle) * Screen.height + Screen.height / 2, 0.0f, Screen.height);
 
-        Vector3 outward = (new Vector3(x,y,center.z) - center);
-        Vector3 screenEdgePos = Camera.main.ScreenToWorldPoint(new Vector3(x, y, constDist) - outward/3.5f);// myScreenPosition + outward * 100);// transform.position + Vector3.right + Vector3.forward * 1.4f + Vector3.up;
-        Vector3 closeFollowPos = Camera.main.ScreenToWorldPoint(new Vector3(myScreenPosition.x, myScreenPosition.y, constDist) + outward.normalized*100);// myScreenPosition + outward * 100);// transform.position + Vector3.right + Vector3.forward * 1.4f + Vector3.up;
+        Vector3 outward = (new Vector3(x, y, center.z) - center);
+        Vector3 screenEdgePos = Camera.main.ScreenToWorldPoint(new Vector3(x, y, constDist) - outward / 3.5f);// myScreenPosition + outward * 100);// transform.position + Vector3.right + Vector3.forward * 1.4f + Vector3.up;
+        Vector3 closeFollowPos = Camera.main.ScreenToWorldPoint(new Vector3(myScreenPosition.x, myScreenPosition.y, constDist) + outward.normalized * 100);// myScreenPosition + outward * 100);// transform.position + Vector3.right + Vector3.forward * 1.4f + Vector3.up;
 
-        if(Vector3.Distance(closeFollowPos, center) > Vector3.Distance(screenEdgePos, center))
+        if (Vector3.Distance(closeFollowPos, center) > Vector3.Distance(screenEdgePos, center))
         {
-            myDisplay.targetPosition = closeFollowPos;
+            if (snap)
+            {
+                myDisplay.transform.position = closeFollowPos;
+            }
+            else
+            { 
+                myDisplay.targetPosition = closeFollowPos;
+            }
         }
         else
         {
-            myDisplay.targetPosition = closeFollowPos;
+            if (snap)
+            {
+                myDisplay.transform.position = closeFollowPos;
+            }
+            else
+            {
+                myDisplay.targetPosition = closeFollowPos;
+            }
+        }
+
+    }
+
+    void Update()
+	{
+        SetDisplayPos(false);
+
+        Rect myDisplayScreenRect = new Rect(Camera.main.WorldToScreenPoint(myDisplay.targetPosition), new Vector2(100, 100));
+
+        bool isOccluding = false;
+
+        foreach (playerController player in FindObjectsOfType<playerController>())
+        {
+            if (myDisplayScreenRect.Contains(player.transform.position))
+            {
+                //myDisplay.GoTransparent();
+                isOccluding = true;
+                break;
+            }
+        }
+
+        if (!isOccluding)
+        {
+            //myDisplay.GoOpaque();
         }
 
         crowdPlayer.speed = crowdPlayer.minSpeed + (crowdPlayer.maxSpeed - crowdPlayer.minSpeed) * Mathf.InverseLerp(myDisplay.minHype, myDisplay.maxHype, myDisplay.hypeNumber);
