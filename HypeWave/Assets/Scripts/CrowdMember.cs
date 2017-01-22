@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CrowdMember : MonoBehaviour
 {
-	Animator animator;
+	//Animator animator;
     private Crowd crowd;
     private Vector2 crowdPos;
     public float hypeLevel;
@@ -17,8 +17,8 @@ public class CrowdMember : MonoBehaviour
     private void Start()
     {
         crowd = Crowd.Instance;
-        int i = UnityEngine.Random.Range(0,visuals.Length);
-        Instantiate(visuals[i], gameObject); 
+        int i = UnityEngine.Random.Range(0,(visuals.Length-1));
+        Instantiate(visuals[i], gameObject.transform); 
         crowd.crowdUpdate += UpdateState;
         crowd.pitStart += PitStarts;
     }
@@ -39,7 +39,7 @@ public class CrowdMember : MonoBehaviour
                                                                   //float of hype
             hypeLevel = hype.magnitude;
             //set the animator float that governs the blend tree of how hype each member is
-            if (animator) animator.SetFloat("HypeLevel", hypeLevel);
+            //if (animator) animator.SetFloat("HypeLevel", hypeLevel);
             GetComponent<Renderer>().material.color = new Color(hype.x, hype.y, 0);
         }
     }
