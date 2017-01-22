@@ -49,4 +49,23 @@ public class notePrefab : MonoBehaviour {
     {
         return myColor;
     }
+
+    public void setColor(noteColor g)
+    {
+        switch ((int)g)
+        {
+            case 0:
+                noteSprite.color = white;
+                break;
+            case 1:
+                noteSprite.color = yellow;
+                break;
+            case 2:
+                noteSprite.color = red;
+                break;
+            case 3:
+                noteSprite.color = green;
+                break;
+        }
+    }
 }

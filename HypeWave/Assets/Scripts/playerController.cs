@@ -101,21 +101,23 @@ public class playerController : MonoBehaviour {
 
         bool isOccluding = false;
 
-        foreach (playerController player in FindObjectsOfType<playerController>())
+        if (!isKOd)
         {
-            if (myDisplayScreenRect.Contains(player.transform.position))
+            foreach (playerController player in FindObjectsOfType<playerController>())
             {
-                //myDisplay.GoTransparent();
-                isOccluding = true;
-                break;
+                if (myDisplayScreenRect.Contains(player.transform.position))
+                {
+                    myDisplay.setTransparency(.8f);
+                    isOccluding = true;
+                    break;
+                }
+            }
+
+            if (!isOccluding)
+            {
+                myDisplay.setTransparency(1f);
             }
         }
-
-        if (!isOccluding)
-        {
-            //myDisplay.GoOpaque();
-        }
-
         crowdPlayer.speed = crowdPlayer.minSpeed + (crowdPlayer.maxSpeed - crowdPlayer.minSpeed) * Mathf.InverseLerp(myDisplay.minHype, myDisplay.maxHype, myDisplay.hypeNumber);
 
         //use the wave with rb
@@ -264,7 +266,7 @@ public class playerController : MonoBehaviour {
         isKOd = true;
         myDisplay.isKOd = isKOd;
         debugRenderer.enabled = false;
-
+        myDisplay.dissappear();
     }
 
     public void PlayerRespawned()
@@ -274,6 +276,7 @@ public class playerController : MonoBehaviour {
         myDisplay.isKOd = isKOd;
         debugRenderer.enabled = true;
         myDisplay.hypeNumber=0;
+        myDisplay.reAppear();
     }
 
     public songDisplayManager getManager()

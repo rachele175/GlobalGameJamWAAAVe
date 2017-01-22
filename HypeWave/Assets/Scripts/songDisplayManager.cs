@@ -46,8 +46,10 @@ public class songDisplayManager : MonoBehaviour {
     Color original;
 
     string playerNum;
-    SpriteRenderer backgroundSpite;
     public bool isKOd;
+
+    public SpriteRenderer backgroundSprite;
+    public List<SpriteRenderer> uiItems;
     // Use this for initialization
     void Start () {
         internalMaxHype = hypeRequiredForWave*3;
@@ -67,6 +69,11 @@ public class songDisplayManager : MonoBehaviour {
         GameObject currentNote = Instantiate(notePrefab, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0), noteContainer.transform);
         notePrefab noteScript=currentNote.GetComponent<notePrefab>();
         noteScript.setUp(g, this, playerNum);
+        if (isKOd)
+        {
+            noteScript.GetComponentInChildren<SpriteRenderer>().color = new Color32((byte)noteScript.GetComponentInChildren<SpriteRenderer>().color.r, (byte)noteScript.GetComponentInChildren<SpriteRenderer>().color.g, (byte)noteScript.GetComponentInChildren<SpriteRenderer>().color.b, (byte)0);
+
+        }
         moveNote(noteScript, g);
     }
 
@@ -238,7 +245,52 @@ public class songDisplayManager : MonoBehaviour {
 
     public void setTransparency(float myT)
     {
-        backgroundSpite.color = new Color32((byte)backgroundSpite.color.r, (byte)backgroundSpite.color.g, (byte)backgroundSpite.color.b, (byte)myT);
+      backgroundSprite.color = new Color(backgroundSprite.color.r, backgroundSprite.color.g, backgroundSprite.color.b, (byte)myT);
+    }
+
+    public void dissappear()
+    {
+        comboTracker.gameObject.SetActive(false);
+        strumBar.SetActive(false);
+        foreach (SpriteRenderer s in uiItems)
+        {
+            s.color = new Color(s.color.r, s.color.g, s.color.b, 0f);
+            if (s.GetComponent<fretFeedback>() != null)
+            {
+                s.GetComponent<fretFeedback>().noteAlpha = 0f;
+                s.GetComponent<fretFeedback>().updateColors();
+            }
+        }
+        foreach (notePrefab p in FindObjectsOfType<notePrefab>())
+        {
+            if (p.playerID == playerNum)
+            {
+                p.GetComponentInChildren<SpriteRenderer>().color = new Color32((byte)p.GetComponentInChildren<SpriteRenderer>().color.r, (byte)p.GetComponentInChildren<SpriteRenderer>().color.g, (byte)p.GetComponentInChildren<SpriteRenderer>().color.b, (byte)0);
+            }
+        }
+       
+    }
+
+    public void reAppear()
+    {
+        comboTracker.gameObject.SetActive(true);
+        strumBar.SetActive(true);
+        foreach (SpriteRenderer s in uiItems)
+        {
+            s.color = new Color(s.color.r, s.color.g, s.color.b, 1);
+            if (s.GetComponent<fretFeedback>() != null)
+            {
+                s.GetComponent<fretFeedback>().noteAlpha = 255f;
+                s.GetComponent<fretFeedback>().updateColors();
+            }
+        }
+        foreach (notePrefab p in FindObjectsOfType<notePrefab>())
+        {
+            if (p.playerID == playerNum)
+            {
+                p.setColor(p.getMyColor());
+            }
+        }
     }
 
 
