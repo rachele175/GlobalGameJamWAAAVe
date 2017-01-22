@@ -14,7 +14,7 @@ public class notePrefab : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position+=(new Vector3(noteSpeed, 0f, 0f));
+        transform.localPosition+=(new Vector3(noteSpeed, 0f, 0f));
 	}
 
     public void setUp(noteColor g, songDisplayManager manage, string playerNum)

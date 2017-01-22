@@ -35,7 +35,7 @@ public class playerController : MonoBehaviour {
 
 	void Update()
 	{
-        myDisplay.transform.position = transform.position + Vector3.right * 2 + Vector3.forward * 2;
+        myDisplay.transform.position = transform.position + Vector3.right + Vector3.forward * 1.4f + Vector3.up;
         crowdPlayer.speed = crowdPlayer.minSpeed + (crowdPlayer.maxSpeed - crowdPlayer.minSpeed) * Mathf.InverseLerp(myDisplay.minHype, myDisplay.maxHype, myDisplay.hypeNumber);
 
         //use the wave with rb
