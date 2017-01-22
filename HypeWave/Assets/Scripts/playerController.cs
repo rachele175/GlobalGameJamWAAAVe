@@ -51,8 +51,9 @@ public class playerController : MonoBehaviour {
 		myCharacter.transform.rotation = Quaternion.AngleAxis(40f, Vector3.right);
 
         spotlight = Instantiate(spotlightPrefab);
+     
         spotlight.target = this.transform;
-
+        spotlight.assignColor();
         if (!creatingSong)
         {
             myDisplay.noMoreHype += crowdPlayer.Die;
