@@ -150,7 +150,7 @@ public class playerController : MonoBehaviour {
         //Use THE STRUM BAR with RT
         if(Input.GetAxis("j" + controllerNumber + "Strum") >= .95)
         {
-
+            /*
             if (!strummed)
             {
                 Debug.Log("j" + controllerNumber + " pressed STRUM");
@@ -204,6 +204,7 @@ public class playerController : MonoBehaviour {
                 }
                 strummed = true;
             }
+            */
         }
         else
         {
@@ -215,6 +216,10 @@ public class playerController : MonoBehaviour {
 			Debug.Log("j" + controllerNumber + " pressed RB");
 			//call rhythm game functions
             myDisplay.pressFret(noteColor.White);
+            if (!whitePressed)
+            {
+                myDisplay.strikeNote(noteColor.White);
+            }
             whitePressed = true;
 
         }
@@ -229,6 +234,10 @@ public class playerController : MonoBehaviour {
         if (Input.GetButton("j" + controllerNumber + "NoteYellow")) {
 			Debug.Log("j" + controllerNumber + " pressed y");
             //call rhythm game functions
+            if (!yellowPressed)
+            {
+                myDisplay.strikeNote(noteColor.Yellow);
+            }
             yellowPressed = true;
             myDisplay.pressFret(noteColor.Yellow);
         }
@@ -243,6 +252,10 @@ public class playerController : MonoBehaviour {
         if (Input.GetButton("j" + controllerNumber + "NoteGreen")) {
 			Debug.Log("j" + controllerNumber + " pressed A");
             //call rhythm game functions
+            if (!greenPressed)
+            {
+                myDisplay.strikeNote(noteColor.Green);
+            }
             myDisplay.pressFret(noteColor.Green);
             greenPressed = true;
 
@@ -259,6 +272,10 @@ public class playerController : MonoBehaviour {
 			Debug.Log("j" + controllerNumber + " pressed B");
             //call rhythm game functions
             myDisplay.pressFret(noteColor.Red);
+            if (!redPressed)
+            {
+                myDisplay.strikeNote(noteColor.Red);
+            }
             redPressed = true;
 
         }
