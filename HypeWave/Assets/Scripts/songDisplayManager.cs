@@ -1,22 +1,18 @@
 ﻿using System.Collections;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class songDisplayManager : MonoBehaviour {
 
     public event Action noMoreHype;
 
-
     public int hypeNumber;
     public TextMesh comboTracker;
 
-    public int minHype = -3;
-    public int maxHype = 10;
-
     int combo;
     int hypeRequiredForWave = 5;
-    int internalMaxHype;
+    int maxHype;
     public GameObject noteContainer;
     public GameObject notePrefab;
 
@@ -47,7 +43,7 @@ public class songDisplayManager : MonoBehaviour {
     string playerNum;
     // Use this for initialization
     void Start () {
-        internalMaxHype = hypeRequiredForWave*3;
+        maxHype = hypeRequiredForWave*3;
         original = strumBar.GetComponent<Renderer>().material.color;
 
     }
@@ -176,7 +172,7 @@ public class songDisplayManager : MonoBehaviour {
     {
         if (hypeNumber >= 0)
         {
-            hypeBar.transform.localScale = new Vector3(((float)hypeNumber / internalMaxHype) * 4.0506f, hypeBar.transform.localScale.y, hypeBar.transform.localScale.z);
+            hypeBar.transform.localScale = new Vector3(((float)hypeNumber / maxHype) * 4.0506f, hypeBar.transform.localScale.y, hypeBar.transform.localScale.z);
         }
         if (hypeNumber <= 0)
         {
