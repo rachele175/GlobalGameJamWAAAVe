@@ -206,6 +206,7 @@ public class songDisplayManager : MonoBehaviour {
 
     public void killPlayer()
     {
+        hypeNumber = 0;
         noMoreHype();
     }
 
