@@ -1,12 +1,16 @@
 fileFormatVersion: 2
 guid: b1f3467e06e79a04aa339689d414a6f5
-timeCreated: 1485117404
+timeCreated: 1485120555
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: moshpit_0
     21300002: moshpit_1
     21300004: moshpit_2
+    21300006: moshpit_3
+    21300008: moshpit_4
+    21300010: moshpit_5
+    21300012: moshpit_6
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -106,6 +110,58 @@ TextureImporter:
         y: 92
         width: 1134
         height: 990
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: moshpit_3
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 1982
+        width: 431
+        height: 450
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: moshpit_4
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 2138
+        width: 557
+        height: 676
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: moshpit_5
+      rect:
+        serializedVersion: 2
+        x: 1627
+        y: 1087
+        width: 478
+        height: 585
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: moshpit_6
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 98
+        width: 575
+        height: 689
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

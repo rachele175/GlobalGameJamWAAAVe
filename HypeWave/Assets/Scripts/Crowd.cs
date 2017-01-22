@@ -218,6 +218,7 @@ public class Crowd : MonoBehaviour
             }
             foreach(Pit pit in donepits)
             {
+                Destroy(pit.visuals);
                 pits.Remove(pit);
             }
 
