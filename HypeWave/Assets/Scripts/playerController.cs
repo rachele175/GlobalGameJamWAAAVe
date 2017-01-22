@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerController : MonoBehaviour {
 
 	Vector3 moveDirection;
-	public string controllerNumber;
+	public int controllerNumber;
 	private songDisplayManager myDisplay; //this is the fret board
 
     bool strummed;
@@ -24,10 +24,10 @@ public class playerController : MonoBehaviour {
 
     void Start()
 	{
-		Debug.Log(controllerNumber);
+		Debug.Log("j" + controllerNumber);
         strummed = false;
         myDisplay = Instantiate(songDisplayManagerPrefab);
-        myDisplay.assignPlayerID(controllerNumber);
+        myDisplay.assignPlayerID("j" + controllerNumber);
         crowdPlayer.controller = this;
 
         myDisplay.noMoreHype += crowdPlayer.Die;
@@ -39,10 +39,13 @@ public class playerController : MonoBehaviour {
         /*
         Vector3 outward = (myScreenPosition - center).normalized;
         */
-        Vector3 myScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
-        Vector3 center = new Vector3(Screen.width / 2, Screen.height / 2, myScreenPosition.z);
 
-        Vector3 vector = myScreenPosition - center;
+        float constDist = 5;
+
+        Vector3 myScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 center = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+
+        Vector2 vector = myScreenPosition - center;
         vector.Normalize();
 
         float angle = Mathf.Atan2(vector.y, vector.x);
@@ -51,24 +54,33 @@ public class playerController : MonoBehaviour {
         float y = Mathf.Clamp(Mathf.Sin(angle) * Screen.height + Screen.height / 2, 0.0f, Screen.height);
 
         Vector3 outward = (new Vector3(x,y,center.z) - center);
-        myDisplay.targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(x, y, 5) - outward/3.5f);// myScreenPosition + outward * 100);// transform.position + Vector3.right + Vector3.forward * 1.4f + Vector3.up;
+        Vector3 screenEdgePos = Camera.main.ScreenToWorldPoint(new Vector3(x, y, constDist) - outward/3.5f);// myScreenPosition + outward * 100);// transform.position + Vector3.right + Vector3.forward * 1.4f + Vector3.up;
+        Vector3 closeFollowPos = Camera.main.ScreenToWorldPoint(new Vector3(myScreenPosition.x, myScreenPosition.y, constDist) + outward.normalized*100);// myScreenPosition + outward * 100);// transform.position + Vector3.right + Vector3.forward * 1.4f + Vector3.up;
 
+        if(Vector3.Distance(closeFollowPos, center) > Vector3.Distance(screenEdgePos, center))
+        {
+            myDisplay.targetPosition = closeFollowPos;
+        }
+        else
+        {
+            myDisplay.targetPosition = closeFollowPos;
+        }
 
         crowdPlayer.speed = crowdPlayer.minSpeed + (crowdPlayer.maxSpeed - crowdPlayer.minSpeed) * Mathf.InverseLerp(myDisplay.minHype, myDisplay.maxHype, myDisplay.hypeNumber);
 
         //use the wave with rb
-        if (Input.GetButtonDown(controllerNumber + "Wave")) {
-			Debug.Log(controllerNumber + " pressed rb");
+        if (Input.GetButtonDown("j" + controllerNumber + "Wave")) {
+			Debug.Log("j" + controllerNumber + " pressed rb");
             //call wave function
             crowdPlayer.CreateWave();
         }
 
         //Use THE STRUM BAR with RB
-        if(Input.GetAxis(controllerNumber + "Strum") >= .95)
+        if(Input.GetAxis("j" + controllerNumber + "Strum") >= .95)
         {
             if (!strummed)
             {
-                Debug.Log(controllerNumber + " pressed STRUM");
+                Debug.Log("j" + controllerNumber + " pressed STRUM");
                 myDisplay.strumFeedback();
                 if (whitePressed)
                 {
@@ -99,8 +111,8 @@ public class playerController : MonoBehaviour {
         }
 
 		//RB = rhythm game
-		if (Input.GetButton(controllerNumber + "NoteWhite")) {
-			Debug.Log(controllerNumber + " pressed RB");
+		if (Input.GetButton("j" + controllerNumber + "NoteWhite")) {
+			Debug.Log("j" + controllerNumber + " pressed RB");
 			//call rhythm game functions
             myDisplay.pressFret(noteColor.White);
             whitePressed = true;
@@ -114,8 +126,8 @@ public class playerController : MonoBehaviour {
         }
 
         //Y = rhythm game
-        if (Input.GetButton(controllerNumber + "NoteYellow")) {
-			Debug.Log(controllerNumber + " pressed y");
+        if (Input.GetButton("j" + controllerNumber + "NoteYellow")) {
+			Debug.Log("j" + controllerNumber + " pressed y");
             //call rhythm game functions
             yellowPressed = true;
             myDisplay.pressFret(noteColor.Yellow);
@@ -128,8 +140,8 @@ public class playerController : MonoBehaviour {
         }
 
         //A = rhythm game
-        if (Input.GetButton(controllerNumber + "NoteGreen")) {
-			Debug.Log(controllerNumber + " pressed A");
+        if (Input.GetButton("j" + controllerNumber + "NoteGreen")) {
+			Debug.Log("j" + controllerNumber + " pressed A");
             //call rhythm game functions
             myDisplay.pressFret(noteColor.Green);
             greenPressed = true;
@@ -143,8 +155,8 @@ public class playerController : MonoBehaviour {
         }
 
         //B = rhythm game
-        if (Input.GetButton(controllerNumber + "NoteRed")) {
-			Debug.Log(controllerNumber + " pressed B");
+        if (Input.GetButton("j" + controllerNumber + "NoteRed")) {
+			Debug.Log("j" + controllerNumber + " pressed B");
             //call rhythm game functions
             myDisplay.pressFret(noteColor.Red);
             redPressed = true;
@@ -159,7 +171,7 @@ public class playerController : MonoBehaviour {
 
     public Vector2 GetInput()
     {
-        return Vector3.right * Input.GetAxis(controllerNumber + "Horizontal") + Vector3.up * Input.GetAxis(controllerNumber + "Vertical");
+        return Vector3.right * Input.GetAxis("j" + controllerNumber + "Horizontal") + Vector3.up * Input.GetAxis("j" + controllerNumber + "Vertical");
     }
 
 
@@ -174,6 +186,7 @@ public class playerController : MonoBehaviour {
     {
         // TODO
         debugRenderer.enabled = true;
+        myDisplay.hypeNumber=0;
     }
 
     public songDisplayManager getManager()
