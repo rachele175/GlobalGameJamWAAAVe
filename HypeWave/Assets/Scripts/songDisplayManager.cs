@@ -72,7 +72,10 @@ public class songDisplayManager : MonoBehaviour {
         {
             if (g.GetComponent<notePrefab>().getMyColor() == noteCol)
             {
-                hypeNumber += 1;
+                if (hypeNumber < maxHype)
+                {
+                    hypeNumber += 1;
+                }
                 combo += 1;
                 deleteNotes.Add(g);
 

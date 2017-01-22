@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class playerController : MonoBehaviour {
-
+    List<float> strumTestTimes= new List<float>();
+    public bool creatingSong;
 	Vector3 moveDirection;
 	public string controllerNumber;
 	private songDisplayManager myDisplay; //this is the fret board
@@ -45,11 +47,17 @@ public class playerController : MonoBehaviour {
             crowdPlayer.CreateWave();
         }
 
-        //Use THE STRUM BAR with RB
+        //Use THE STRUM BAR with RT
         if(Input.GetAxis(controllerNumber + "Strum") >= .95)
         {
+
             if (!strummed)
             {
+                if (creatingSong)
+                {
+                    strumTestTimes.Add(Time.time);
+                }
+
                 Debug.Log(controllerNumber + " pressed STRUM");
                 myDisplay.strumFeedback();
                 if (whitePressed)
@@ -161,5 +169,18 @@ public class playerController : MonoBehaviour {
     public songDisplayManager getManager()
     {
         return myDisplay;
+    }
+
+    private void OnDestroy()
+    {
+        if (creatingSong)
+        {
+            var sr = File.CreateText("FreeBirdRecord.txt");
+            foreach (float f in strumTestTimes)
+            {
+                sr.WriteLine("" + f + " 0");
+            }
+            sr.Close();
+        }
     }
 }
