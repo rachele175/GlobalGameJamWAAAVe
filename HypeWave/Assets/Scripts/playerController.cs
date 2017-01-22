@@ -141,7 +141,7 @@ public class playerController : MonoBehaviour {
                 if (crowdPlayer.CreateWave())
                 {
                     //myDisplay.hypeNumber -= 5;
-                    AkSoundEngine.PostEvent("Play_CrowdWaveTrigger");
+                    //AkSoundEngine.PostEvent("Play_CrowdWaveTrigger", );
                 }
             }
 

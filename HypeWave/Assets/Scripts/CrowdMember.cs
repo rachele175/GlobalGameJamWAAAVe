@@ -12,6 +12,8 @@ public class CrowdMember : MonoBehaviour
 
     public GameObject[] visuals;
 
+    public Animator animator;
+
     private float pitEndsTime;
 
     private void Start()
@@ -37,13 +39,13 @@ public class CrowdMember : MonoBehaviour
             // TODO
             transform.position = new Vector3(
                             transform.position.x,
-                            crowd.GetMove(crowdPos.x, crowdPos.y).magnitude,
+                            crowd.GetMove(crowdPos.x, crowdPos.y).magnitude * 1.35f,
                             transform.position.z);
             Vector2 hype = crowd.GetHype(crowdPos.x, crowdPos.y); //magnitude of this vector is the hype
                                                                   //float of hype
             hypeLevel = hype.magnitude;
             //set the animator float that governs the blend tree of how hype each member is
-            //if (animator) animator.SetFloat("HypeLevel", hypeLevel);
+            if (animator) animator.SetFloat("HypeLevel", hypeLevel);
             GetComponent<Renderer>().material.color = new Color(hype.x, hype.y, 0);
         }
     }
