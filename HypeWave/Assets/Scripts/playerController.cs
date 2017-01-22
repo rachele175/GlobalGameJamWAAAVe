@@ -157,4 +157,9 @@ public class playerController : MonoBehaviour {
         // TODO
         debugRenderer.enabled = true;
     }
+
+    public songDisplayManager getManager()
+    {
+        return myDisplay;
+    }
 }
