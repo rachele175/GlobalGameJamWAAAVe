@@ -122,10 +122,15 @@ public class playerController : MonoBehaviour {
         if (Input.GetButtonDown("j" + controllerNumber + "Wave")) {
 			Debug.Log("j" + controllerNumber + " pressed rb");
             //call wave function
-            crowdPlayer.CreateWave();
+            if (myDisplay.hypeNumber > 4)
+            {
+                crowdPlayer.CreateWave();
+                myDisplay.hypeNumber -= 5;
+            }
+
         }
 
-        //Use THE STRUM BAR with RB
+        //Use THE STRUM BAR with RT
         if(Input.GetAxis("j" + controllerNumber + "Strum") >= .95)
         {
 
