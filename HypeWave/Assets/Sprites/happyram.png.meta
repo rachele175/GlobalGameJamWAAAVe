@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b840c40c7e18edd42be6291a1fc7c014
-timeCreated: 1485047668
+timeCreated: 1485050355
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -86,9 +86,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2075
-        width: 1249
-        height: 1432
+        y: 2076
+        width: 1243
+        height: 1431
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -99,9 +99,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1255
-        y: 2081
-        width: 1225
-        height: 1423
+        y: 2082
+        width: 1218
+        height: 1425
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,9 +112,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 552
+        y: 479
         width: 1249
-        height: 1476
+        height: 1467
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,10 +124,10 @@ TextureImporter:
       name: happyRam4
       rect:
         serializedVersion: 2
-        x: 1249
-        y: 552
-        width: 1231
-        height: 1482
+        x: 1255
+        y: 479
+        width: 1224
+        height: 1461
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
