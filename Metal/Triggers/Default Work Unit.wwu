@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{D9BD5539-7931-424C-8BD0-EC43340C9135}" SchemaVersion="75">
+	<Triggers>
+		<WorkUnit Name="Default Work Unit" ID="{D9BD5539-7931-424C-8BD0-EC43340C9135}" PersistMode="Standalone">
+			<ChildrenList>
+				<Trigger Name="Mosh_On" ID="{DC46EEDD-705D-4C93-AC7E-AA50205D6E0B}"/>
+				<Trigger Name="Wave_On" ID="{4DD3F86F-FC88-4893-B1C2-30012DDEFF50}"/>
+			</ChildrenList>
+		</WorkUnit>
+	</Triggers>
+</WwiseDocument>

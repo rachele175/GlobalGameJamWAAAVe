@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ValidationCache Version="1" SchemaVersion="75">
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="3654814608" DateHigh="30569578"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Attenuations\Default Work Unit.wwu" DateLow="318113031" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Audio Devices\Default Work Unit.wwu" DateLow="318063037" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Control Surface Sessions\Default Work Unit.wwu" DateLow="318433067" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Conversion Settings\Default Work Unit.wwu" DateLow="318223056" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Conversion Settings\Factory Conversion Settings.wwu" DateLow="982838199" DateHigh="30560767"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Dynamic Dialogue\Default Work Unit.wwu" DateLow="318518080" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Effects\Default Work Unit.wwu" DateLow="317697989" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Effects\Factory Altiverb - Outdoor and More.wwu" DateLow="3379799552" DateHigh="30560766"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Effects\Factory Auro Headphone.wwu" DateLow="3752156609" DateHigh="30560762"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Effects\Factory Convolution Reverb Effects.wwu" DateLow="3388153451" DateHigh="30560766"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Effects\Factory Effects.wwu" DateLow="990080954" DateHigh="30560767"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Effects\Factory iZotope Box Modeler.wwu" DateLow="3639013760" DateHigh="30560765"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Effects\Factory iZotope Delay.wwu" DateLow="3633261929" DateHigh="30560765"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Effects\Factory iZotope Dynamics.wwu" DateLow="3649873297" DateHigh="30560765"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Effects\Factory iZotope Filters.wwu" DateLow="3635733234" DateHigh="30560765"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Effects\Factory iZotope Hybrid Reverb Effects.wwu" DateLow="3667794433" DateHigh="30560765"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Effects\Factory iZotope Multiband Distortion.wwu" DateLow="3648772689" DateHigh="30560765"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Effects\Factory iZotope Singleband Distortion.wwu" DateLow="3633156906" DateHigh="30560765"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Effects\Factory McDSP Effects.wwu" DateLow="3283038219" DateHigh="30560762"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Events\Default Work Unit.wwu" DateLow="1735999759" DateHigh="30569603"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Game Parameters\Default Work Unit.wwu" DateLow="2617235620" DateHigh="30569533"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1014158982" DateHigh="30569578"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1013934136" DateHigh="30569578"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Metal.Tom.wsettings" DateLow="1045415480" DateHigh="30569610"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Metal.wproj" DateLow="2822023532" DateHigh="30569601"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Mixing Sessions\Default Work Unit.wwu" DateLow="318163044" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Modulators\Default Work Unit.wwu" DateLow="2617385656" DateHigh="30569533"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Presets\Default Work Unit.wwu" DateLow="317948196" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Queries\Default Work Unit.wwu" DateLow="318003139" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Queries\Factory Queries.wwu" DateLow="982317800" DateHigh="30560767"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\SoundBanks\Default Work Unit.wwu" DateLow="317763160" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Soundcaster Sessions\Default Work Unit.wwu" DateLow="317827994" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\States\Default Work Unit.wwu" DateLow="2616625555" DateHigh="30569533"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Switches\Default Work Unit.wwu" DateLow="2617085604" DateHigh="30569533"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\GitHub\GlobalGameJamWAAAVe\Metal\Triggers\Default Work Unit.wwu" DateLow="2616425675" DateHigh="30569533"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="3654814608" DateHigh="30569578"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Actor-Mixer Hierarchy\Factory Crankcase REV.wwu" DateLow="2700725515" DateHigh="30560767"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Actor-Mixer Hierarchy\Factory SoundSeed Air Objects.wwu" DateLow="979455855" DateHigh="30560767"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Actor-Mixer Hierarchy\Factory Synth One.wwu" DateLow="987229812" DateHigh="30560767"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Attenuations\Default Work Unit.wwu" DateLow="318113031" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Audio Devices\Default Work Unit.wwu" DateLow="318063037" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Control Surface Sessions\Default Work Unit.wwu" DateLow="318433067" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Conversion Settings\Default Work Unit.wwu" DateLow="318223056" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Conversion Settings\Factory Conversion Settings.wwu" DateLow="982838199" DateHigh="30560767"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Dynamic Dialogue\Default Work Unit.wwu" DateLow="318518080" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Effects\Default Work Unit.wwu" DateLow="317697989" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Effects\Factory Altiverb - Outdoor and More.wwu" DateLow="3379799552" DateHigh="30560766"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Effects\Factory Auro Headphone.wwu" DateLow="3752156609" DateHigh="30560762"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Effects\Factory Convolution Reverb Effects.wwu" DateLow="3388153451" DateHigh="30560766"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Effects\Factory Effects.wwu" DateLow="990080954" DateHigh="30560767"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Effects\Factory iZotope Box Modeler.wwu" DateLow="3639013760" DateHigh="30560765"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Effects\Factory iZotope Delay.wwu" DateLow="3633261929" DateHigh="30560765"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Effects\Factory iZotope Dynamics.wwu" DateLow="3649873297" DateHigh="30560765"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Effects\Factory iZotope Filters.wwu" DateLow="3635733234" DateHigh="30560765"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Effects\Factory iZotope Hybrid Reverb Effects.wwu" DateLow="3667794433" DateHigh="30560765"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Effects\Factory iZotope Multiband Distortion.wwu" DateLow="3648772689" DateHigh="30560765"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Effects\Factory iZotope Singleband Distortion.wwu" DateLow="3633156906" DateHigh="30560765"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Effects\Factory McDSP Effects.wwu" DateLow="3283038219" DateHigh="30560762"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Events\Default Work Unit.wwu" DateLow="1735999759" DateHigh="30569603"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Game Parameters\Default Work Unit.wwu" DateLow="2617235620" DateHigh="30569533"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Game Parameters\Factory SoundSeed Air Game Syncs.wwu" DateLow="989860843" DateHigh="30560767"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1014158982" DateHigh="30569578"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1013934136" DateHigh="30569578"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Metal.Tom.wsettings" DateLow="933063421" DateHigh="30569599"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Metal.wproj" DateLow="2822023532" DateHigh="30569601"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Mixing Sessions\Default Work Unit.wwu" DateLow="318163044" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Modulators\Default Work Unit.wwu" DateLow="2617385656" DateHigh="30569533"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Presets\Default Work Unit.wwu" DateLow="317948196" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Queries\Default Work Unit.wwu" DateLow="318003139" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Queries\Factory Queries.wwu" DateLow="982317800" DateHigh="30560767"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\SoundBanks\Default Work Unit.wwu" DateLow="317763160" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Soundcaster Sessions\Default Work Unit.wwu" DateLow="317827994" DateHigh="30569526"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\States\Default Work Unit.wwu" DateLow="2616625555" DateHigh="30569533"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Switches\Default Work Unit.wwu" DateLow="2617085604" DateHigh="30569533"/>
+	<ValidationCacheItem File="C:\Users\Tom\Documents\WwiseProjects\Metal\Triggers\Default Work Unit.wwu" DateLow="2616425675" DateHigh="30569533"/>
+</ValidationCache>

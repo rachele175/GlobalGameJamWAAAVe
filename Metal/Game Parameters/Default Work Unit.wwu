@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{4CC7C772-2F5E-470D-97D6-878FA3E235C3}" SchemaVersion="75">
+	<GameParameters>
+		<WorkUnit Name="Default Work Unit" ID="{4CC7C772-2F5E-470D-97D6-878FA3E235C3}" PersistMode="Standalone">
+			<ChildrenList>
+				<GameParameter Name="Hype_Level" ID="{9B66C3FA-251F-4507-A3DF-B22FBE71384F}"/>
+			</ChildrenList>
+		</WorkUnit>
+	</GameParameters>
+</WwiseDocument>

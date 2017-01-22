@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{8D6B10B3-E710-41C2-8EEC-09868CD81693}" SchemaVersion="75">
+	<InteractiveMusic>
+		<WorkUnit Name="Default Work Unit" ID="{8D6B10B3-E710-41C2-8EEC-09868CD81693}" PersistMode="Standalone">
+			<ChildrenList>
+				<MusicSegment Name="BOTB_WIP1" ID="{AE3E7062-3171-4E8D-8F06-D4349D5EF19D}" ShortID="1008973624">
+					<PropertyList>
+						<Property Name="EndPosition" Type="Real64" Value="37575.89569161"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Music" ID="{DA1CEDDE-618D-4992-8C88-16C93EBCA568}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicTrack Name="BOTB_WIP1" ID="{16A8CDF5-C6BA-4A46-8FA6-5056D6CE0459}" ShortID="427365104">
+							<ReferenceList>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BOTB_WIP1" ID="{4811129A-F89D-48BC-9C55-46772F9C8F2F}" ShortID="360397675">
+									<Language>SFX</Language>
+									<AudioFile>BOTB_WIP1.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<TransitionList>
+								<MusicTransition Name="Root" ID="{27B71C78-0AE7-4C55-B121-B53424600756}">
+									<PropertyList>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
+									</PropertyList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</TransitionList>
+							<SequenceList>
+								<MusicTrackSequence Name="" ID="{6FBF17F9-DB8B-4B5D-BF60-C5063E850905}">
+									<ClipList>
+										<MusicClip Name="BOTB_WIP1" ID="{8FB7B959-C8DC-4D89-A544-BA005967591B}">
+											<PropertyList>
+												<Property Name="EndTrimOffset" Type="Real64" Value="37575.89569161"/>
+												<Property Name="FadeInMode" Type="int16" Value="0"/>
+												<Property Name="FadeOutMode" Type="int16" Value="0"/>
+											</PropertyList>
+											<AudioSourceRef Name="BOTB_WIP1" ID="{4811129A-F89D-48BC-9C55-46772F9C8F2F}"/>
+										</MusicClip>
+									</ClipList>
+								</MusicTrackSequence>
+							</SequenceList>
+						</MusicTrack>
+					</ChildrenList>
+					<CueList>
+						<MusicCue Name="Entry Cue" ID="{394CD88F-1D20-491A-A79A-5550EBA157F3}"/>
+						<MusicCue Name="Exit Cue" ID="{866DC532-4FFC-4109-8413-110297A1568D}">
+							<PropertyList>
+								<Property Name="CueType" Type="int16" Value="1"/>
+								<Property Name="TimeMs" Type="Real64" Value="37575.89569161"/>
+							</PropertyList>
+						</MusicCue>
+					</CueList>
+				</MusicSegment>
+			</ChildrenList>
+		</WorkUnit>
+	</InteractiveMusic>
+</WwiseDocument>

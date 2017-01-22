@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{97BD250A-62C9-476D-A61A-85999F8BF705}" SchemaVersion="75">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{97BD250A-62C9-476D-A61A-85999F8BF705}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="MoshPit_TriggerScream" ID="{FC63495F-7325-4BC8-A41A-BD7DC1EA58B1}" ShortID="706563152" Type="SoundFX">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-1</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+						</Reference>
+						<Reference Name="Effect0">
+							<Custom>
+								<Effect Name="Wwise Parametric EQ (Custom)" ID="{6C7527FE-2B4F-4B50-B228-1902824F11C5}" ShortID="557510457" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+									<PropertyList>
+										<Property Name="FrequencyBand1" Type="Real32" Value="160"/>
+										<Property Name="GainBand1" Type="Real32" Value="-4.5"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SFX" ID="{756C2392-F515-4E1B-9E4F-646A3FB13919}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="ShortenedMetalScream" ID="{AF026BE9-4F20-48AE-B9AA-CBB5D326C0E3}" ShortID="596658891">
+							<Language>SFX</Language>
+							<AudioFile>ShortenedMetalScream.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="ShortenedMetalScream" ID="{AF026BE9-4F20-48AE-B9AA-CBB5D326C0E3}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<BlendContainer Name="Crowd Hype Atmos" ID="{1AD037FF-57D9-479A-BACB-9676BFBC68CA}" ShortID="90066350">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+						</Reference>
+						<Reference Name="Effect0">
+							<Custom>
+								<Effect Name="Wwise Parametric EQ (Custom)" ID="{2E6FAC48-D33D-4CD3-A822-0EA2DF19B21A}" ShortID="31817618" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+									<PropertyList>
+										<Property Name="FrequencyBand1" Type="Real32" Value="160"/>
+										<Property Name="FrequencyBand3" Type="Real32" Value="3000"/>
+										<Property Name="GainBand1" Type="Real32" Value="-4.5"/>
+										<Property Name="GainBand3" Type="Real32" Value="-10"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SFX" ID="{756C2392-F515-4E1B-9E4F-646A3FB13919}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="BooCrowdHype" ID="{425D135C-D2BD-4D1A-9A1C-E3AECF8C5CD5}" ShortID="348755593" Type="SoundFX">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="BooCrowdHype" ID="{26212B95-95FB-435D-99B3-4FCE2635C5F6}" ShortID="1052159431">
+									<Language>SFX</Language>
+									<AudioFile>BooCrowdHype.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="BooCrowdHype" ID="{26212B95-95FB-435D-99B3-4FCE2635C5F6}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="HighCrowdHype" ID="{1710DF79-112C-441A-BE55-E46726AD205F}" ShortID="959199069" Type="SoundFX">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="HighCrowdHype" ID="{BF0AFDD6-AF79-4228-9F69-8BEC0B0297C4}" ShortID="832311133">
+									<Language>SFX</Language>
+									<AudioFile>HighCrowdHype.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="HighCrowdHype" ID="{BF0AFDD6-AF79-4228-9F69-8BEC0B0297C4}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="MedCrowdHype" ID="{6BD1E6FF-0B30-4972-BAAB-C98821EC5749}" ShortID="354750667" Type="SoundFX">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="MedCrowdHype" ID="{0839A880-57B0-44A8-880B-2B2D61460E9F}" ShortID="531664562">
+									<Language>SFX</Language>
+									<AudioFile>MedCrowdHype.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="MedCrowdHype" ID="{0839A880-57B0-44A8-880B-2B2D61460E9F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="LowCrowdHype" ID="{65B81AB9-D455-4C96-816D-777AB0BEF148}" ShortID="16353991" Type="SoundFX">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="LowCrowdHype" ID="{D43F568D-1A88-4C60-BDE3-B998E8DD3678}" ShortID="781048848">
+									<Language>SFX</Language>
+									<AudioFile>LowCrowdHype.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="LowCrowdHype" ID="{D43F568D-1A88-4C60-BDE3-B998E8DD3678}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+					<BlendTrackList>
+						<BlendTrack Name="Crowd Crossfade" ID="{858FAD25-CEE6-4AA7-B821-40D0F2983E5E}" ShortID="149881614">
+							<PropertyList>
+								<Property Name="EnableCrossFading" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="LayerCrossFadeControlInput">
+									<ObjectRef Name="Hype_Level" ID="{9B66C3FA-251F-4507-A3DF-B22FBE71384F}" WorkUnitID="{4CC7C772-2F5E-470D-97D6-878FA3E235C3}"/>
+								</Reference>
+							</ReferenceList>
+							<BlendTrackAssocList>
+								<BlendTrackAssoc>
+									<ItemRef Name="BooCrowdHype" ID="{425D135C-D2BD-4D1A-9A1C-E3AECF8C5CD5}"/>
+									<CrossfadingInfo>
+										<LeftEdgePos>0</LeftEdgePos>
+										<LeftFadingMode>Automatic</LeftFadingMode>
+										<RightEdgePos>30.2892561983471</RightEdgePos>
+										<RightFadingMode>Automatic</RightFadingMode>
+										<RightFadingSegmentShape>Exp2</RightFadingSegmentShape>
+									</CrossfadingInfo>
+								</BlendTrackAssoc>
+								<BlendTrackAssoc>
+									<ItemRef Name="LowCrowdHype" ID="{65B81AB9-D455-4C96-816D-777AB0BEF148}"/>
+									<CrossfadingInfo>
+										<LeftEdgePos>15.2685950413223</LeftEdgePos>
+										<LeftFadingMode>Automatic</LeftFadingMode>
+										<LeftFadingSegmentShape>Log2</LeftFadingSegmentShape>
+										<RightEdgePos>50.1446280991736</RightEdgePos>
+										<RightFadingMode>Automatic</RightFadingMode>
+										<RightFadingSegmentShape>Exp2</RightFadingSegmentShape>
+									</CrossfadingInfo>
+								</BlendTrackAssoc>
+								<BlendTrackAssoc>
+									<ItemRef Name="MedCrowdHype" ID="{6BD1E6FF-0B30-4972-BAAB-C98821EC5749}"/>
+									<CrossfadingInfo>
+										<LeftEdgePos>30.2892561983471</LeftEdgePos>
+										<LeftFadingMode>Automatic</LeftFadingMode>
+										<LeftFadingSegmentShape>Log2</LeftFadingSegmentShape>
+										<RightEdgePos>80.2892561983471</RightEdgePos>
+										<RightFadingMode>Automatic</RightFadingMode>
+										<RightFadingSegmentShape>Exp2</RightFadingSegmentShape>
+									</CrossfadingInfo>
+								</BlendTrackAssoc>
+								<BlendTrackAssoc>
+									<ItemRef Name="HighCrowdHype" ID="{1710DF79-112C-441A-BE55-E46726AD205F}"/>
+									<CrossfadingInfo>
+										<LeftEdgePos>59.2669039256198</LeftEdgePos>
+										<LeftFadingMode>Automatic</LeftFadingMode>
+										<LeftFadingSegmentShape>Log2</LeftFadingSegmentShape>
+										<RightEdgePos>100</RightEdgePos>
+										<RightFadingMode>Automatic</RightFadingMode>
+									</CrossfadingInfo>
+								</BlendTrackAssoc>
+							</BlendTrackAssocList>
+						</BlendTrack>
+					</BlendTrackList>
+				</BlendContainer>
+				<Sound Name="Wave Activation sound" ID="{D60EA968-CF68-42FB-AD17-1759ED04D0D4}" ShortID="692697904" Type="SoundFX">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SFX" ID="{756C2392-F515-4E1B-9E4F-646A3FB13919}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Wave Activation sound" ID="{8628C357-21A7-4450-B126-CFA38AD568A8}" ShortID="728190291">
+							<Language>SFX</Language>
+							<AudioFile>Wave Activation sound.wav</AudioFile>
+						</AudioFileSource>
+						<AudioFileSource Name="Wave Activation sound_01" ID="{11BCA97B-8766-4F6A-9611-C50F5BD825BE}" ShortID="481953538">
+							<Language>SFX</Language>
+							<AudioFile>Wave Activation sound.wav</AudioFile>
+							<ConvertedFileIDList>
+								<File ID="728190291"/>
+							</ConvertedFileIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Wave Activation sound" ID="{8628C357-21A7-4450-B126-CFA38AD568A8}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<RandomSequenceContainer Name="Wrong Notes" ID="{E8AE4A3B-085B-412D-BB8B-F5CD540B6852}" ShortID="999834440">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-1</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+						</Reference>
+						<Reference Name="Effect0">
+							<Custom>
+								<Effect Name="Wwise Parametric EQ (Custom)" ID="{81FB95FE-1DE6-4C73-A178-E4BFED809F5D}" ShortID="309339610" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+									<PropertyList>
+										<Property Name="FrequencyBand1" Type="Real32" Value="160"/>
+										<Property Name="GainBand1" Type="Real32" Value="-4.5"/>
+									</PropertyList>
+								</Effect>
+							</Custom>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SFX" ID="{756C2392-F515-4E1B-9E4F-646A3FB13919}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Fail1" ID="{C877295A-24D7-45F1-BB26-43F51578C871}" ShortID="203411424" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Fail1" ID="{53E5DC8F-424A-408B-9BAF-EB9916F4DC7A}" ShortID="750664329">
+									<Language>SFX</Language>
+									<AudioFile>Fail1.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Fail1" ID="{53E5DC8F-424A-408B-9BAF-EB9916F4DC7A}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Fail2" ID="{B70EDFAA-D617-436C-9C78-430BDF4FA5D1}" ShortID="769077441" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Fail2" ID="{2DEE8992-61DA-4001-A5CC-6EA41154038A}" ShortID="528973957">
+									<Language>SFX</Language>
+									<AudioFile>Fail2.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Fail2" ID="{2DEE8992-61DA-4001-A5CC-6EA41154038A}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Fail3" ID="{A056924D-4EBD-4169-9BA4-A9C92F854770}" ShortID="1041140979" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Fail3" ID="{BB56A272-AB36-40A0-AB86-00424312A05E}" ShortID="762778546">
+									<Language>SFX</Language>
+									<AudioFile>Fail3.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Fail3" ID="{BB56A272-AB36-40A0-AB86-00424312A05E}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Fail4" ID="{BDF8C425-FE9A-4649-9BF6-E98EB7106AF0}" ShortID="453679377" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Fail4" ID="{C82499F2-17D7-4EDD-B511-DA4C4B5C41E9}" ShortID="823366095">
+									<Language>SFX</Language>
+									<AudioFile>Fail4.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Fail4" ID="{C82499F2-17D7-4EDD-B511-DA4C4B5C41E9}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Fail5" ID="{2F56DD76-1DDC-442E-8C06-5C295AD5AF50}" ShortID="568494745" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Fail5" ID="{CA4FDED7-EC67-4EB2-91BB-78D2B6801403}" ShortID="731665658">
+									<Language>SFX</Language>
+									<AudioFile>Fail5.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Fail5" ID="{CA4FDED7-EC67-4EB2-91BB-78D2B6801403}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
+				<RandomSequenceContainer Name="Player Impact" ID="{075555B7-620D-4F5F-980C-64D76C9B35B4}" ShortID="965929284">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-3</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SFX" ID="{756C2392-F515-4E1B-9E4F-646A3FB13919}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Collision1" ID="{E70092C0-1F22-4871-A92F-E4DEADE6D7EA}" ShortID="74607090" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Collision1" ID="{5EF3AA73-F23A-49F8-B7A4-E1BD4512A35C}" ShortID="450272867">
+									<Language>SFX</Language>
+									<AudioFile>Collision1.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Collision1" ID="{5EF3AA73-F23A-49F8-B7A4-E1BD4512A35C}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Collision2" ID="{A657C522-6011-41F9-98B5-A480B8229357}" ShortID="112718365" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Collision2" ID="{B3BAC449-3756-4FA2-B2CC-5556FF440BED}" ShortID="473472830">
+									<Language>SFX</Language>
+									<AudioFile>Collision2.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Collision2" ID="{B3BAC449-3756-4FA2-B2CC-5556FF440BED}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Collision3" ID="{2091F814-DBA1-4D13-BA4B-8AD528B846E5}" ShortID="444233423" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{33E8A344-7426-45E0-BCCC-6B3388736884}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{B9B3F47F-EAAA-47F4-B735-59104F426057}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Collision3" ID="{1497D62A-A2FE-4EB2-A271-59A4347D6974}" ShortID="478454184">
+									<Language>SFX</Language>
+									<AudioFile>Collision3.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Collision3" ID="{1497D62A-A2FE-4EB2-A271-59A4347D6974}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

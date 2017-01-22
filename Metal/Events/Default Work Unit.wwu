@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{746F1C85-77CD-4033-AD05-62B4C0671E45}" SchemaVersion="75">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{746F1C85-77CD-4033-AD05-62B4C0671E45}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_ShortenedMetalScream" ID="{0AB893CD-D7B7-4379-9AA1-CF7518148A59}">
+					<ChildrenList>
+						<Action Name="Play" ID="{03140C8F-913D-40CB-AD72-3E4CAF36E4B1}" ShortID="337136513" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{153EFACE-07E3-4EAB-B397-DDD35D1AF59B}" Global="false">
+									<ObjectRef Name="MoshPit_TriggerScream" ID="{FC63495F-7325-4BC8-A41A-BD7DC1EA58B1}" WorkUnitID="{97BD250A-62C9-476D-A61A-85999F8BF705}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_CrowdWaveTrigger" ID="{C1D4E049-0D54-4C9A-A6A9-7C587AA54B32}">
+					<ChildrenList>
+						<Action Name="Play" ID="{3E2FD18D-E43E-4DFF-8406-65680108AE38}" ShortID="1019285917" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{4D1D7397-0E18-4822-BD0B-D8E04C936DD6}" Global="false">
+									<ObjectRef Name="Wave Activation sound" ID="{D60EA968-CF68-42FB-AD17-1759ED04D0D4}" WorkUnitID="{97BD250A-62C9-476D-A61A-85999F8BF705}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Wrong_Notes" ID="{E5C4D16A-E390-47EC-A932-C343E7A34722}">
+					<ChildrenList>
+						<Action Name="Play" ID="{019AAE12-7FCC-4C86-9B28-7C8C8B572E05}" ShortID="908988049" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{5EC9131E-23E5-451D-9B9A-600E6BFB809A}" Global="false">
+									<ObjectRef Name="Wrong Notes" ID="{E8AE4A3B-085B-412D-BB8B-F5CD540B6852}" WorkUnitID="{97BD250A-62C9-476D-A61A-85999F8BF705}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Crowd_Hype_Atmos" ID="{98AFF458-8CEB-4697-A973-D6EB97F108C0}">
+					<ChildrenList>
+						<Action Name="Play" ID="{BD605A02-3970-43A9-AD2F-F6A206850685}" ShortID="513157880" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{A3AE54CA-8896-4C83-9AC9-9C890521B74C}" Global="false">
+									<ObjectRef Name="Crowd Hype Atmos" ID="{1AD037FF-57D9-479A-BACB-9676BFBC68CA}" WorkUnitID="{97BD250A-62C9-476D-A61A-85999F8BF705}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_All" ID="{EF47518C-EE25-45B3-940E-97BA093A7936}">
+					<ChildrenList>
+						<Action Name="Play" ID="{B9640131-25AF-4CA5-A52A-CD98EC1FFAB8}" ShortID="901563663" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{D227C916-A10C-4B9F-B71C-D81CF7C76162}" Global="false">
+									<ObjectRef Name="Wrong Notes" ID="{E8AE4A3B-085B-412D-BB8B-F5CD540B6852}" WorkUnitID="{97BD250A-62C9-476D-A61A-85999F8BF705}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{67C1B9A2-C8D2-439C-AC25-3098EEE81582}" ShortID="1023332266" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{3016B092-338D-4999-ACF3-3A188F83FA2D}" Global="false">
+									<ObjectRef Name="Crowd Hype Atmos" ID="{1AD037FF-57D9-479A-BACB-9676BFBC68CA}" WorkUnitID="{97BD250A-62C9-476D-A61A-85999F8BF705}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{0C921824-F1F3-471D-9F35-27963BE60B17}" ShortID="211997172" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{81FBC3C2-3492-4B83-AD79-7C6F8A49A065}" Global="false">
+									<ObjectRef Name="Wave Activation sound" ID="{D60EA968-CF68-42FB-AD17-1759ED04D0D4}" WorkUnitID="{97BD250A-62C9-476D-A61A-85999F8BF705}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{827FDD6F-F443-4F52-B6BF-2698B18D8539}" ShortID="64490545" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{9F5FC240-4BDF-4FFE-B5BD-66F07663B15A}" Global="false">
+									<ObjectRef Name="BOTB_WIP1" ID="{AE3E7062-3171-4E8D-8F06-D4349D5EF19D}" WorkUnitID="{8D6B10B3-E710-41C2-8EEC-09868CD81693}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{381A15C8-2BE6-4749-B088-4BBEC430F3A9}" ShortID="213920487" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{0AD86221-8899-4669-864D-1E0F55443771}" Global="false">
+									<ObjectRef Name="MoshPit_TriggerScream" ID="{FC63495F-7325-4BC8-A41A-BD7DC1EA58B1}" WorkUnitID="{97BD250A-62C9-476D-A61A-85999F8BF705}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{6F14C985-23A1-47D6-9599-60BBFB9A3D8A}" ShortID="370340501" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{438BEAB9-D4FB-4BE9-B82C-D93B15D1EAFF}" Global="false">
+									<ObjectRef Name="Player Impact" ID="{075555B7-620D-4F5F-980C-64D76C9B35B4}" WorkUnitID="{97BD250A-62C9-476D-A61A-85999F8BF705}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Player_Impact" ID="{BCF820C5-DBA0-4ED7-A00E-1DE1836A69AC}">
+					<ChildrenList>
+						<Action Name="Play" ID="{4DFBC6EF-8FD7-49C4-9392-BF22B743C424}" ShortID="251628952" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{F80ABBDA-8774-4FC4-9A70-693D7B9A7195}" Global="false">
+									<ObjectRef Name="Player Impact" ID="{075555B7-620D-4F5F-980C-64D76C9B35B4}" WorkUnitID="{97BD250A-62C9-476D-A61A-85999F8BF705}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Folder Name="Music" ID="{FEFFB9F2-4A1A-4573-9DA0-688FD0A5F3D4}" ShortID="776675906">
+					<ChildrenList>
+						<Event Name="Play_BOTB_WIP1" ID="{393E01BE-6907-49AB-B8ED-B1A47DC11298}">
+							<ChildrenList>
+								<Action Name="Play" ID="{635E7B5E-FDF1-4AEC-AE4A-616803B9BD5C}" ShortID="535102957" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{984ECBB9-9487-4053-84F8-FEE7EE74A29E}" Global="false">
+											<ObjectRef Name="BOTB_WIP1" ID="{AE3E7062-3171-4E8D-8F06-D4349D5EF19D}" WorkUnitID="{8D6B10B3-E710-41C2-8EEC-09868CD81693}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_BOTB_WIP1" ID="{B1D21961-2EBB-4D8D-A179-159455FE73D8}">
+							<ChildrenList>
+								<Action Name="Stop" ID="{8F87C0C8-0299-48C3-93BF-B6FEBD71E0C8}" ShortID="668827968" Type="Stop" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{09C168B5-9913-46BF-92C5-A17FB6E99440}" Global="false">
+											<ObjectRef Name="BOTB_WIP1" ID="{AE3E7062-3171-4E8D-8F06-D4349D5EF19D}" WorkUnitID="{8D6B10B3-E710-41C2-8EEC-09868CD81693}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Event Name="Stop_Crowd_Hype_Atmos" ID="{42771C09-D453-4C1C-BFB1-CF75E3530A7D}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{C2A49524-EC7A-4CF7-94DF-D56A19AD015F}" ShortID="298507838" Type="Stop" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{2D36EFAE-0A24-4D30-AE2E-E76610F4A471}" Global="false">
+									<ObjectRef Name="Crowd Hype Atmos" ID="{1AD037FF-57D9-479A-BACB-9676BFBC68CA}" WorkUnitID="{97BD250A-62C9-476D-A61A-85999F8BF705}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

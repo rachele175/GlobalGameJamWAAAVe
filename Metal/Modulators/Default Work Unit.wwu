@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{B9EB8A1B-CABA-4F71-9CD9-6ACB92B2D776}" SchemaVersion="75">
+	<Modulators>
+		<WorkUnit Name="Default Work Unit" ID="{B9EB8A1B-CABA-4F71-9CD9-6ACB92B2D776}" PersistMode="Standalone">
+			<ChildrenList>
+				<ModulatorEnvelope Name="New Modulator Envelope" ID="{02C01EB1-908D-4D3F-A0A1-A33875FCCC2B}" ShortID="250138541"/>
+			</ChildrenList>
+		</WorkUnit>
+	</Modulators>
+</WwiseDocument>
