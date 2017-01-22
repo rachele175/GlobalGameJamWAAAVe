@@ -26,7 +26,7 @@ public class playerController : MonoBehaviour {
     bool greenPressed;
     bool yellowPressed;
 
-    
+    public bool isKOd;
     void Start()
 	{
 		Debug.Log("j" + controllerNumber);
@@ -261,6 +261,8 @@ public class playerController : MonoBehaviour {
     public void PlayerDied()
     {
         // TODO
+        isKOd = true;
+        myDisplay.isKOd = isKOd;
         debugRenderer.enabled = false;
 
     }
@@ -268,7 +270,8 @@ public class playerController : MonoBehaviour {
     public void PlayerRespawned()
     {
         // TODO
-        
+        isKOd = false;
+        myDisplay.isKOd = isKOd;
         debugRenderer.enabled = true;
         myDisplay.hypeNumber=0;
     }

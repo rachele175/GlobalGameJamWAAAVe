@@ -47,6 +47,7 @@ public class songDisplayManager : MonoBehaviour {
 
     string playerNum;
     SpriteRenderer backgroundSpite;
+    public bool isKOd;
     // Use this for initialization
     void Start () {
         internalMaxHype = hypeRequiredForWave*3;
@@ -89,6 +90,10 @@ public class songDisplayManager : MonoBehaviour {
         {
             hypeNumber -= 1;
             breakCombo();
+            if (hypeNumber < -3)
+            {
+                noMoreHype();
+            }
         }
         foreach(GameObject d in deleteNotes)
         {
