@@ -33,7 +33,7 @@ public class CrowdMember : MonoBehaviour
         //float of hype
         hypeLevel = hype.magnitude;
         //set the animator float that governs the blend tree of how hype each member is
-        animator.SetFloat("HypeLevel", hypeLevel);
+        //animator.SetFloat("HypeLevel", hypeLevel);
         GetComponent<Renderer>().material.color = new Color(hype.x, hype.y, 0);
     }
 

@@ -28,12 +28,9 @@ public class notePossibleZone : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "note")
+        if (other.gameObject.tag == "note" && strummableNotes.Contains(other.gameObject))
         {
-            if (myMang.getPlayerID() == other.gameObject.GetComponent<notePrefab>().playerID)
-            {
-                strummableNotes.Remove(other.gameObject);
-            }
+            strummableNotes.Remove(other.gameObject);
         }
     }
 }
