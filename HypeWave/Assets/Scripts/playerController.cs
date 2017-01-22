@@ -149,6 +149,7 @@ public class playerController : MonoBehaviour {
     {
         // TODO
         debugRenderer.enabled = false;
+
     }
 
     public void PlayerRespawned()
