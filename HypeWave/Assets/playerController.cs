@@ -6,11 +6,11 @@ public class playerController : MonoBehaviour {
 
 	Vector3 moveDirection;
 	public string controllerNumber;
-	public songDisplayManager myDisplay; //this is the fret board
+	private songDisplayManager myDisplay; //this is the fret board
 
     bool strummed;
 
-   // public songDisplayManager songDisplayManagerPrefab;
+    public songDisplayManager songDisplayManagerPrefab;
 
 
     public CrowdPlayer crowdPlayer; //this is the player object in the crowd
@@ -26,8 +26,8 @@ public class playerController : MonoBehaviour {
 	{
 		Debug.Log(controllerNumber);
         strummed = false;
-        //songDisplayManagerInstance = Instantiate(songDisplayManagerPrefab);
-        //myDisplay = Instantiate(songDisplayManagerPrefab);
+        myDisplay = Instantiate(songDisplayManagerPrefab);
+        myDisplay.transform.position = Vector3.right * 10 + Vector3.forward * 10;
         crowdPlayer.controller = this;
 
     }
@@ -37,18 +37,18 @@ public class playerController : MonoBehaviour {
 
 
 		//use the wave with rb
-		if (Input.GetButton("j" + controllerNumber + "Wave")) {
-			Debug.Log("j" + controllerNumber + " pressed rb");
+		if (Input.GetButton(controllerNumber + "Wave")) {
+			Debug.Log(controllerNumber + " pressed rb");
             //call wave function
             crowdPlayer.CreateWave();
         }
 
         //Use THE STRUM BAR
-        if(Input.GetAxis("j" + controllerNumber + "Strum") >= .95)
+        if(Input.GetAxis(controllerNumber + "Strum") >= .95)
         {
             if (!strummed)
             {
-                Debug.Log("j" + controllerNumber + " pressed STRUM");
+                Debug.Log(controllerNumber + " pressed STRUM");
                 myDisplay.strumFeedback();
                 if (whitePressed)
                 {
@@ -80,8 +80,8 @@ public class playerController : MonoBehaviour {
 
 		//x = rhythm game
 
-		if (Input.GetButton("j" + controllerNumber + "NoteWhite")) {
-			Debug.Log("j" + controllerNumber + " pressed RB");
+		if (Input.GetButton(controllerNumber + "NoteWhite")) {
+			Debug.Log(controllerNumber + " pressed RB");
 			//call rhythm game functions
             myDisplay.pressFret(noteColor.White);
             whitePressed = true;
@@ -95,8 +95,8 @@ public class playerController : MonoBehaviour {
         }
 
         //y = rhythm game
-        if (Input.GetButton("j" + controllerNumber + "NoteYellow")) {
-			Debug.Log("j" + controllerNumber + " pressed y");
+        if (Input.GetButton(controllerNumber + "NoteYellow")) {
+			Debug.Log(controllerNumber + " pressed y");
             //call rhythm game functions
             yellowPressed = true;
             myDisplay.pressFret(noteColor.Yellow);
@@ -108,8 +108,8 @@ public class playerController : MonoBehaviour {
 
         }
         //a = rhythm game
-        if (Input.GetButton("j" + controllerNumber + "NoteGreen")) {
-			Debug.Log("j" + controllerNumber + " pressed A");
+        if (Input.GetButton(controllerNumber + "NoteGreen")) {
+			Debug.Log(controllerNumber + " pressed A");
             //call rhythm game functions
             myDisplay.pressFret(noteColor.Green);
             greenPressed = true;
@@ -122,8 +122,8 @@ public class playerController : MonoBehaviour {
 
         }
         //b = rhythm game
-        if (Input.GetButton("j" + controllerNumber + "NoteRed")) {
-			Debug.Log("j" + controllerNumber + " pressed B");
+        if (Input.GetButton(controllerNumber + "NoteRed")) {
+			Debug.Log(controllerNumber + " pressed B");
             //call rhythm game functions
             myDisplay.pressFret(noteColor.Red);
             redPressed = true;
