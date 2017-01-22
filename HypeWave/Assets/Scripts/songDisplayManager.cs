@@ -1,12 +1,18 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class songDisplayManager : MonoBehaviour {
 
+    public event Action noMoreHype;
+
     public int playerNum;
     public int hypeNumber;
     public TextMesh comboTracker;
+
+    public int minHype = -3;
+    public int maxHype = 10;
 
     int combo;
     int hypeRequiredForWave = 5;
@@ -198,6 +204,6 @@ public class songDisplayManager : MonoBehaviour {
 
     public void killPlayer()
     {
-
+        noMoreHype();
     }
 }
