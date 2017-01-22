@@ -268,6 +268,7 @@ public class playerController : MonoBehaviour {
     public void PlayerRespawned()
     {
         // TODO
+        
         debugRenderer.enabled = true;
         myDisplay.hypeNumber=0;
     }
