@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum noteColor { Red, Blue, Orange, Yellow };
+public enum noteColor { White, Yellow, Red, Green };
 
 public class songScript : MonoBehaviour {
 
@@ -40,8 +40,9 @@ public class songScript : MonoBehaviour {
                 foreach (GameObject g in GameObject.FindGameObjectsWithTag("songDisplays"))
                 {
                     g.GetComponent<songDisplayManager>().spawnNote(notesList[noteCount]);
-                    noteCount++;
+
                 }
+                noteCount++;
             }
         }
 	}

@@ -10,10 +10,13 @@ public class CrowdMember : MonoBehaviour
     private Vector2 crowdPos;
     public float hypeLevel;
 
+    private float pitEndsTime;
+
     private void Start()
     {
         crowd = Crowd.Instance;
         crowd.crowdUpdate += UpdateState;
+        crowd.pitStart += PitStarts;
     }
 
 
@@ -38,5 +41,14 @@ public class CrowdMember : MonoBehaviour
     {
         crowdPos = new Vector2(x, y);
         transform.position = new Vector3(x, 0, y);
+    }
+
+    private void PitStarts(float x, float y, float radius, float duration)
+    {
+        if(Vector2.Distance(crowdPos, new Vector2(x,y)) < radius)
+        {
+            pitEndsTime = Time.time + duration;
+            GetComponent<Renderer>().material.color = Color.white;
+        }
     }
 }

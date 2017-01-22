@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class assignPlayerNumber : MonoBehaviour {
 
-	player[] fourPlayers;
+	playerController[] fourPlayers;
 
 	void Start()
 	{
-		fourPlayers = FindObjectsOfType<player>();
+		fourPlayers = FindObjectsOfType<playerController>();
 		for (int i = 0; i < 4; i++)
 		{
 			Debug.Log("the manager just grabbed " + fourPlayers[i]);
