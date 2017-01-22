@@ -22,12 +22,17 @@ public class CrowdMember : MonoBehaviour
     private Vector3 relocateTarget;
 
     private float pitEndsTime;
+    private GameObject vis;
+
+    private float pitAnimateTime;
+    private int currentPitSprite;
+    public Sprite[] pitSprites;
 
     private void Start()
     {
         crowd = Crowd.Instance;
         int i = UnityEngine.Random.Range(0,(visuals.Length-1));
-        GameObject vis = Instantiate(visuals[i]);
+        vis = Instantiate(visuals[i]);
         vis.transform.SetParent(gameObject.transform);
         vis.transform.localPosition = Vector3.zero;
         vis.transform.localScale = Vector3.one * .35f; 
@@ -56,7 +61,17 @@ public class CrowdMember : MonoBehaviour
             hypeLevel = hype.magnitude;
             //set the animator float that governs the blend tree of how hype each member is
             //if (animator) animator.SetFloat("HypeLevel", hypeLevel);
-            GetComponent<Renderer>().material.color = new Color(hype.x, hype.y, 0);
+            //GetComponent<Renderer>().material.color = new Color(hype.x, hype.y, 0);
+            vis.GetComponent<SpriteRenderer>().enabled = true;
+            animator.enabled = true;
+        }
+
+        if(Time.time - pitAnimateTime > UnityEngine.Random.Range(0.25f, 0.4f))
+        {
+            pitAnimateTime = Time.time;
+
+            currentPitSprite = (currentPitSprite + 1) % pitSprites.Length;
+            vis.GetComponent<SpriteRenderer>().sprite = pitSprites[currentPitSprite];
         }
 
         float hypeLerp = Mathf.Sqrt(hypeLevel / maxHype);
@@ -99,7 +114,14 @@ public class CrowdMember : MonoBehaviour
         if(Vector2.Distance(crowdPos, new Vector2(x,y)) < radius)
         {
             pitEndsTime = Time.time + duration;
-            GetComponent<Renderer>().material.color = Color.white;
+            //GetComponent<Renderer>().material.color = Color.white;
+            animator.enabled = false;
+            vis.GetComponent<SpriteRenderer>().sprite = pitSprites[0];
+
+            if(UnityEngine.Random.Range(0f,1f) < 0.2f)
+            {
+                vis.GetComponent<SpriteRenderer>().enabled = false;
+            }
         }
     }
 }
