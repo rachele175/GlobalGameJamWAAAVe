@@ -146,7 +146,6 @@ public class CrowdPlayer : MonoBehaviour
     {
         deathTime = Time.time;
         dead = true;
-        controller.getManager().hypeNumber=0;
         controller.PlayerDied();
     }
 

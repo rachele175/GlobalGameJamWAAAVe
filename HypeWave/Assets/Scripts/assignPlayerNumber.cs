@@ -12,7 +12,7 @@ public class assignPlayerNumber : MonoBehaviour {
 		for (int i = 0; i < 4; i++)
 		{
 			Debug.Log("the manager just grabbed " + fourPlayers[i]);
-			fourPlayers[i].controllerNumber = "j" + (1 + i).ToString();
+			fourPlayers[i].controllerNumber = i + 1;
 			Debug.Log("the manager just set " + fourPlayers[i] + " to j" +(1+i).ToString());
 		}
 	}
