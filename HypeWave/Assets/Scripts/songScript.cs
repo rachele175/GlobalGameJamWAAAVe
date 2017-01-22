@@ -40,8 +40,9 @@ public class songScript : MonoBehaviour {
                 foreach (GameObject g in GameObject.FindGameObjectsWithTag("songDisplays"))
                 {
                     g.GetComponent<songDisplayManager>().spawnNote(notesList[noteCount]);
-                    noteCount++;
+
                 }
+                noteCount++;
             }
         }
 	}

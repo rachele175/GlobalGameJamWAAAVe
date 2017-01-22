@@ -88,22 +88,22 @@ public class songDisplayManager : MonoBehaviour {
     {
         if (c == noteColor.White)
         {
-            n.transform.localPosition = whiteSpot.transform.position;
+            n.transform.localPosition = whiteSpot.transform.localPosition;
             n.gameObject.GetComponentInChildren<Renderer>().material = whiteMat;
         }
         else if (c == noteColor.Yellow)
         {
-            n.transform.localPosition = yellowSpot.transform.position;
+            n.transform.localPosition = yellowSpot.transform.localPosition;
             n.gameObject.GetComponentInChildren<Renderer>().material = yellowMat;
         }
         else if (c == noteColor.Red)
         {
             n.gameObject.GetComponentInChildren<Renderer>().material = redMat;
-            n.transform.localPosition = redSpot.transform.position;
+            n.transform.localPosition = redSpot.transform.localPosition;
         }
         else if (c == noteColor.Green)
         {
-            n.transform.localPosition = greenSpot.transform.position;
+            n.transform.localPosition = greenSpot.transform.localPosition;
             n.gameObject.GetComponentInChildren<Renderer>().material = greenMat;
         }
 
