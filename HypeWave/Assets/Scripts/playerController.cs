@@ -30,16 +30,17 @@ public class playerController : MonoBehaviour {
         myDisplay.assignPlayerID(controllerNumber);
         crowdPlayer.controller = this;
 
+        myDisplay.noMoreHype += crowdPlayer.Die;
     }
 
 	void Update()
 	{
         myDisplay.transform.position = transform.position + Vector3.right * 2 + Vector3.forward * 2;
+        crowdPlayer.speed = crowdPlayer.minSpeed + (crowdPlayer.maxSpeed - crowdPlayer.minSpeed) * Mathf.InverseLerp(myDisplay.minHype, myDisplay.maxHype, myDisplay.hypeNumber);
 
-
-        //use the wave with LB
-        if (Input.GetButton(controllerNumber + "Wave")) {
-			Debug.Log(controllerNumber + " pressed LB");
+        //use the wave with rb
+        if (Input.GetButtonDown(controllerNumber + "Wave")) {
+			Debug.Log(controllerNumber + " pressed rb");
             //call wave function
             crowdPlayer.CreateWave();
         }

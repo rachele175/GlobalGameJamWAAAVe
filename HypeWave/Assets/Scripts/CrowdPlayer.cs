@@ -6,7 +6,9 @@ public class CrowdPlayer : MonoBehaviour
 {
     public float waveSize = 0.2f;
     public float pushInfluence = 1f;
-    public float speed = 0.5f;
+    public float maxSpeed = 0.12f;
+    public float minSpeed = 0.05f;
+    internal float speed;
     public float hypeAmount = 2;
     private Crowd crowd;
 
@@ -140,7 +142,7 @@ public class CrowdPlayer : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         deathTime = Time.time;
         dead = true;
