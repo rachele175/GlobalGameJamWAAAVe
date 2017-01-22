@@ -58,7 +58,8 @@ public class songDisplayManager : MonoBehaviour {
         comboTracker.text = "x" + combo;
         hypeRunner();
 
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime / 0.3f);
+        //transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime / 0.4f);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, 10 * Time.deltaTime);
 	}
 
     public void spawnNote(noteColor g){
