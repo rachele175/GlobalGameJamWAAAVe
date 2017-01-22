@@ -31,11 +31,29 @@ public class playerController : MonoBehaviour {
         crowdPlayer.controller = this;
 
         myDisplay.noMoreHype += crowdPlayer.Die;
+
     }
 
 	void Update()
 	{
-        myDisplay.transform.position = transform.position + Vector3.right + Vector3.forward * 1.4f + Vector3.up;
+        /*
+        Vector3 outward = (myScreenPosition - center).normalized;
+        */
+        Vector3 myScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 center = new Vector3(Screen.width / 2, Screen.height / 2, myScreenPosition.z);
+
+        Vector3 vector = myScreenPosition - center;
+        vector.Normalize();
+
+        float angle = Mathf.Atan2(vector.y, vector.x);
+
+        float x = Mathf.Clamp(Mathf.Cos(angle) * Screen.width + Screen.width / 2, 0.0f, Screen.width);
+        float y = Mathf.Clamp(Mathf.Sin(angle) * Screen.height + Screen.height / 2, 0.0f, Screen.height);
+
+        Vector3 outward = (new Vector3(x,y,center.z) - center);
+        myDisplay.targetPosition = Camera.main.ScreenToWorldPoint(new Vector3(x, y, 5) - outward/3.5f);// myScreenPosition + outward * 100);// transform.position + Vector3.right + Vector3.forward * 1.4f + Vector3.up;
+
+
         crowdPlayer.speed = crowdPlayer.minSpeed + (crowdPlayer.maxSpeed - crowdPlayer.minSpeed) * Mathf.InverseLerp(myDisplay.minHype, myDisplay.maxHype, myDisplay.hypeNumber);
 
         //use the wave with rb
