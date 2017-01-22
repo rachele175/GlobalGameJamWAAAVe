@@ -20,6 +20,8 @@ public class CrowdMember : MonoBehaviour
         int i = UnityEngine.Random.Range(0,visuals.Length);
         GameObject vis = Instantiate(visuals[i]);
         vis.transform.SetParent(this.transform);
+        vis.transform.localPosition = Vector3.zero;
+        vis.transform.localScale = 0.25f * Vector3.one;
 
         crowd.crowdUpdate += UpdateState;
         crowd.pitStart += PitStarts;
