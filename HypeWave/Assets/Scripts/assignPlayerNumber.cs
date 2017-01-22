@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class assignPlayerNumber : MonoBehaviour {
 
+    public Transform[] respawns;
+
 	playerController[] fourPlayers;
 
 	void Start()
@@ -13,6 +15,7 @@ public class assignPlayerNumber : MonoBehaviour {
 		{
 			Debug.Log("the manager just grabbed " + fourPlayers[i]);
 			fourPlayers[i].controllerNumber = i + 1;
+            fourPlayers[i].crowdPlayer.respawn = respawns[i];
 			Debug.Log("the manager just set " + fourPlayers[i] + " to j" +(1+i).ToString());
 		}
 	}

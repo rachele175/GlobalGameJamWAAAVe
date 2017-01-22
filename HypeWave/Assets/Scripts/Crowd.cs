@@ -41,7 +41,6 @@ public class Crowd : MonoBehaviour
     }
     [SerializeField]
     private Stage[] stages;
-    public Vector2 respawnPoint;
 
     private void Awake()
     {

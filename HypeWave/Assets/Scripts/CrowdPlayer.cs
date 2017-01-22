@@ -39,7 +39,7 @@ public class CrowdPlayer : MonoBehaviour
 
     private Vector2 crowdPosition;
 
-    public GameObject respawn;
+    internal Transform respawn;
 
     private void Start()
     {
@@ -49,7 +49,7 @@ public class CrowdPlayer : MonoBehaviour
         transform.position = respawn.transform.position;
     }
 
-    public void CreateWave()
+    public bool CreateWave()
     {
         if (!dead && !crowd.IsStage(crowdPosition.x, crowdPosition.y))
         {
@@ -57,7 +57,10 @@ public class CrowdPlayer : MonoBehaviour
             crowd.AddMove(crowdPosition.x, crowdPosition.y, waveSize);
             // don't be affected by crowd movement right after a wave
             staunchitude = 1;
+
+            return true;
         }
+        return false;
     }
 
     private void Update()
