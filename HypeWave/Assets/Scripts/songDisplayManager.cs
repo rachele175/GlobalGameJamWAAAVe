@@ -7,6 +7,7 @@ public class songDisplayManager : MonoBehaviour {
 
     public event Action noMoreHype;
 
+    public Vector3 targetPosition;
 
     public int hypeNumber;
     public TextMesh comboTracker;
@@ -56,6 +57,8 @@ public class songDisplayManager : MonoBehaviour {
 	void Update () {
         comboTracker.text = "x" + combo;
         hypeRunner();
+
+        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime / 0.3f);
 	}
 
     public void spawnNote(noteColor g){
@@ -72,7 +75,10 @@ public class songDisplayManager : MonoBehaviour {
         {
             if (g.GetComponent<notePrefab>().getMyColor() == noteCol)
             {
-                hypeNumber += 1;
+                if (hypeNumber < maxHype)
+                {
+                    hypeNumber += 1;
+                }
                 combo += 1;
                 deleteNotes.Add(g);
 
