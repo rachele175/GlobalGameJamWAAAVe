@@ -16,10 +16,13 @@ public class playerController : MonoBehaviour {
 
     public songDisplayManager songDisplayManagerPrefab;
 
+	//visual shit
+	public GameObject[] characters;
+	GameObject myCharacter;
 
     public CrowdPlayer crowdPlayer; //this is the player object in the crowd
 
-    public Renderer debugRenderer;
+    //public Renderer debugRenderer;
 
     bool whitePressed;
     bool redPressed;
@@ -34,6 +37,12 @@ public class playerController : MonoBehaviour {
         myDisplay = Instantiate(songDisplayManagerPrefab);
         myDisplay.assignPlayerID("j" + controllerNumber);
         crowdPlayer.controller = this;
+
+		//instantiate the character visual
+		myCharacter = Instantiate(characters[(controllerNumber-1)]);
+		myCharacter.transform.SetParent(gameObject.transform);
+		myCharacter.transform.localPosition = Vector3.zero; //do I need to do this part?
+		myCharacter.transform.rotation = Quaternion.AngleAxis(30f, Vector3.right);
 
         if (!creatingSong)
         {
@@ -265,7 +274,7 @@ public class playerController : MonoBehaviour {
         // TODO
         isKOd = true;
         myDisplay.isKOd = isKOd;
-        debugRenderer.enabled = false;
+        myCharacter.GetComponent<SpriteRenderer>().enabled = false;
         myDisplay.dissappear();
     }
 
@@ -274,7 +283,7 @@ public class playerController : MonoBehaviour {
         // TODO
         isKOd = false;
         myDisplay.isKOd = isKOd;
-        debugRenderer.enabled = true;
+		myCharacter.GetComponent<SpriteRenderer>().enabled = true;
         myDisplay.hypeNumber=0;
         myDisplay.reAppear();
     }
