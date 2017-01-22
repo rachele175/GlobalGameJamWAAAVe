@@ -24,6 +24,7 @@ public class playerController : MonoBehaviour {
     bool greenPressed;
     bool yellowPressed;
 
+    
     void Start()
 	{
 		Debug.Log(controllerNumber);
@@ -193,7 +194,7 @@ public class playerController : MonoBehaviour {
     {
         if (creatingSong)
         {
-            var sr = File.CreateText("FreeBirdRecord.txt");
+            var sr = File.CreateText(FindObjectOfType<songScript>().fileName);
             foreach (float f in strumTestTimes)
             {
                 sr.WriteLine("" + f + " 0");

@@ -18,6 +18,8 @@ public class songScript : MonoBehaviour {
     public float timeStamp;
 
 
+    public string fileName;
+
     private List<noteColor> notesList= new List<noteColor>();
 
     private List<float> noteTimes= new List<float>();
