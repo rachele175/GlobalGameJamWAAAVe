@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class playerController : MonoBehaviour {
-
+    List<float> strumTestTimes= new List<float>();
+    public bool creatingSong;
 	Vector3 moveDirection;
 	public int controllerNumber;
 	private songDisplayManager myDisplay; //this is the fret board
@@ -22,6 +24,7 @@ public class playerController : MonoBehaviour {
     bool greenPressed;
     bool yellowPressed;
 
+    
     void Start()
 	{
 		Debug.Log("j" + controllerNumber);
@@ -78,9 +81,16 @@ public class playerController : MonoBehaviour {
         //Use THE STRUM BAR with RB
         if(Input.GetAxis("j" + controllerNumber + "Strum") >= .95)
         {
+
             if (!strummed)
             {
                 Debug.Log("j" + controllerNumber + " pressed STRUM");
+
+                if (creatingSong)
+                {
+                    strumTestTimes.Add(Time.time);
+                }
+
                 myDisplay.strumFeedback();
                 if (whitePressed)
                 {
@@ -192,5 +202,18 @@ public class playerController : MonoBehaviour {
     public songDisplayManager getManager()
     {
         return myDisplay;
+    }
+
+    private void OnDestroy()
+    {
+        if (creatingSong)
+        {
+            var sr = File.CreateText(FindObjectOfType<songScript>().fileName);
+            foreach (float f in strumTestTimes)
+            {
+                sr.WriteLine("" + f + " 0");
+            }
+            sr.Close();
+        }
     }
 }
