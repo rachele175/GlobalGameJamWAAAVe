@@ -105,7 +105,8 @@ public class songDisplayManager : MonoBehaviour {
         foreach(GameObject d in deleteNotes)
         {
             myNoteZone.strummableNotes.Remove(d);
-            Destroy(d, 0.1f);
+            d.GetComponent<notePrefab>().explode();
+            Destroy(d, 0.2f);
         }
         
 

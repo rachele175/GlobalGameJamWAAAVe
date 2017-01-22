@@ -13,6 +13,7 @@ public class notePrefab : MonoBehaviour {
     Color32 red = new Color32(231, 0, 0, noteAlpha);
     Color32 yellow = new Color32(230, 255, 0, noteAlpha);
     Color32 white = new Color32(129, 211, 255, noteAlpha);
+    public ParticleSystem feedback;
 	// Use this for initialization
 	void Start () {
 		
@@ -31,15 +32,23 @@ public class notePrefab : MonoBehaviour {
         switch ((int)g) {
             case 0:
                 noteSprite.color = white;
+                feedback.startColor = white;
                 break;
             case 1:
                 noteSprite.color = yellow;
+                feedback.startColor = yellow;
+
+
                 break;
             case 2:
                 noteSprite.color = red;
+                feedback.startColor = red;
+
                 break;
             case 3:
                 noteSprite.color = green;
+                feedback.startColor = green;
+
                 break;
         }
 
@@ -56,16 +65,29 @@ public class notePrefab : MonoBehaviour {
         {
             case 0:
                 noteSprite.color = white;
+                feedback.startColor = white;
+
                 break;
             case 1:
                 noteSprite.color = yellow;
+                feedback.startColor = yellow;
+
                 break;
             case 2:
                 noteSprite.color = red;
+                feedback.startColor = red;
+
                 break;
             case 3:
                 noteSprite.color = green;
+                feedback.startColor = green;
+
                 break;
         }
+    }
+
+    public void explode()
+    {
+        feedback.Play();
     }
 }
