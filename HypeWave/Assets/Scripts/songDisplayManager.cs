@@ -47,6 +47,7 @@ public class songDisplayManager : MonoBehaviour {
 
     string playerNum;
     SpriteRenderer backgroundSpite;
+    public bool isKOd;
     // Use this for initialization
     void Start () {
         internalMaxHype = hypeRequiredForWave*3;
@@ -89,6 +90,10 @@ public class songDisplayManager : MonoBehaviour {
         {
             hypeNumber -= 1;
             breakCombo();
+            if (hypeNumber < -3)
+            {
+                noMoreHype();
+            }
         }
         foreach(GameObject d in deleteNotes)
         {
@@ -143,19 +148,19 @@ public class songDisplayManager : MonoBehaviour {
     {
         if (c == noteColor.White)
         {
-            whiteF.press();
+            whiteF.press(c);
         }
         else if (c == noteColor.Yellow)
         {
-            yellowF.press();
+            yellowF.press(c);
         }
         else if (c == noteColor.Red)
         {
-            redF.press();
+            redF.press(c);
         }
         else if (c == noteColor.Green)
         {
-            greenF.press();
+            greenF.press(c);
         }
     }
 

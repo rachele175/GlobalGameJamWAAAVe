@@ -21,15 +21,18 @@ public class noteKillZone : MonoBehaviour {
         {
             if (myMang.getPlayerID() == collision.gameObject.GetComponent<notePrefab>().playerID)
             {
-                if (myMang.hypeNumber > -3)
+                if (!myMang.isKOd)
                 {
-                    myMang.hypeNumber -= 1;
+                    if (myMang.hypeNumber > -3)
+                    {
+                        myMang.hypeNumber -= 1;
+                    }
+                    else
+                    {
+                        myMang.killPlayer();
+                    }
+                    myMang.breakCombo();
                 }
-                else
-                {
-                    myMang.killPlayer();
-                }
-                myMang.breakCombo();
                 Destroy(collision.gameObject, 0.1f);
             }
         }
