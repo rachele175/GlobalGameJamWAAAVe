@@ -29,8 +29,12 @@ public class Crowd : MonoBehaviour
         public float y;
         public float radius;
         public float stopTime;
+        public GameObject visuals;
     }
     private List<Pit> pits;
+
+    public GameObject pitVisualPrefab;
+
     [Serializable]
     private struct Stage
     {
@@ -89,6 +93,8 @@ public class Crowd : MonoBehaviour
         newPit.y = y;
         newPit.radius = radius;
         newPit.stopTime = Time.time + duration;
+        newPit.visuals = Instantiate(pitVisualPrefab);
+        newPit.visuals.transform.position = new Vector3(x, 0, y);
         pits.Add(newPit);
 
         pitStart.Invoke(x, y, radius, duration);
