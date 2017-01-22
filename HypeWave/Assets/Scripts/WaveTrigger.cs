@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveTrigger : MonoBehaviour {
+public class WaveTrigger : AkTriggerBase {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public void Go()
+    {
+        if(triggerDelegate != null)
+            triggerDelegate.Invoke(this.gameObject);
+    }
 }

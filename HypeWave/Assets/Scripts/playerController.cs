@@ -23,7 +23,7 @@ public class playerController : MonoBehaviour {
     public CrowdPlayer crowdPlayer; //this is the player object in the crowd
 
 
-    public AkGameObj waveSound;
+    public WaveTrigger waveSound;
     public AkAmbient impactSound;
     //public Renderer debugRenderer;
 
@@ -141,7 +141,8 @@ public class playerController : MonoBehaviour {
                 if (crowdPlayer.CreateWave())
                 {
                     //myDisplay.hypeNumber -= 5;
-                    //AkSoundEngine.PostEvent("Play_CrowdWaveTrigger", );
+                    waveSound.Go();
+                    //AkSoundEngine.PostEvent("Play_CrowdWaveTrigger", waveSound.gameObject);
                 }
             }
 
@@ -327,5 +328,10 @@ public class playerController : MonoBehaviour {
             }
             sr.Close();
         }
+    }
+
+    public void SoundPlayed()
+    {
+        Debug.Log("Sound played");
     }
 }
