@@ -14,6 +14,12 @@ public class CrowdMember : MonoBehaviour
 
     public Animator animator;
 
+    private Vector3 centerPosition;
+
+    public float relocatePeriod = 0.1f;
+    private float lastRelocate;
+    private Vector3 relocateTarget;
+
     private float pitEndsTime;
 
     private void Start()
@@ -37,10 +43,12 @@ public class CrowdMember : MonoBehaviour
         if (Time.time > pitEndsTime)
         {
             // TODO
+            /*
             transform.position = new Vector3(
                             transform.position.x,
-                            crowd.GetMove(crowdPos.x, crowdPos.y).magnitude * 1.35f,
+                            crowd.GetMove(crowdPos.x, crowdPos.y).magnitude * 1.15f,
                             transform.position.z);
+            */        
             Vector2 hype = crowd.GetHype(crowdPos.x, crowdPos.y); //magnitude of this vector is the hype
                                                                   //float of hype
             hypeLevel = hype.magnitude;
@@ -48,12 +56,38 @@ public class CrowdMember : MonoBehaviour
             if (animator) animator.SetFloat("HypeLevel", hypeLevel);
             GetComponent<Renderer>().material.color = new Color(hype.x, hype.y, 0);
         }
+
+        if(Time.time - lastRelocate > relocatePeriod)
+        {
+            lastRelocate = Time.time;
+            float deviation1 = 0;
+            float deviation2= 0;
+            int n = 100;
+            for(int i = 0; i < n; i ++)
+            {
+                deviation1 += UnityEngine.Random.Range(0f,1f);
+                deviation2 += UnityEngine.Random.Range(0f,1f);
+            }
+            deviation1 = deviation1 / n;
+            deviation2 = deviation2 / n;
+
+            relocateTarget = centerPosition + Quaternion.AngleAxis(360 * deviation1, Vector3.up) * Vector3.right + deviation2 * Vector3.right;
+            //relocateTarget = centerPosition + deviation1 * Vector3.right + deviation2 * Vector3.forward;
+
+            
+        }
+
+        relocateTarget = new Vector3(relocateTarget.x, crowd.GetMove(crowdPos.x, crowdPos.y).magnitude * 1.15f, relocateTarget.z);
+
+        transform.position = Vector3.Lerp(transform.position, relocateTarget, Time.deltaTime / 0.2f);
+
     }
 
     public void SetPosition(int x, int y)
     {
         crowdPos = new Vector2(x, y);
-        transform.position = new Vector3(x, 0, y);
+        centerPosition = new Vector3(x, 0, y);
+        transform.position = centerPosition;
     }
 
     private void PitStarts(float x, float y, float radius, float duration)

@@ -45,7 +45,7 @@ public class playerController : MonoBehaviour {
 		myCharacter = Instantiate(characters[(controllerNumber-1)]);
 		myCharacter.transform.SetParent(gameObject.transform);
 		myCharacter.transform.localPosition = Vector3.zero; //do I need to do this part?
-		myCharacter.transform.rotation = Quaternion.AngleAxis(30f, Vector3.right);
+		myCharacter.transform.rotation = Quaternion.AngleAxis(40f, Vector3.right);
 
         if (!creatingSong)
         {
