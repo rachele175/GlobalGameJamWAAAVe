@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class gameManager : MonoBehaviour {
     public List<playerController> players;
     public GameObject startScreen;
-     
+    public songScript mySong;
 
     public int gameState;
 
@@ -17,9 +17,21 @@ public class gameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        switch (gameState)
+        {
+            case 0:
+                startScreen.SetActive(true);
+                break;
+            case 1:
+                startScreen.SetActive(false);
+                mySong.playSong=true;
+                break;
+            case 2:
+                break;
+        }
         if (deathCount() > 2)
         {
-
+            incrementGameState();
         }
 	}
 

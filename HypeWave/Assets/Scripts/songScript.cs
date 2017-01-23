@@ -24,7 +24,7 @@ public class songScript : MonoBehaviour {
 
     private List<float> noteTimes= new List<float>();
 
-    public bool playSong = true;
+    public bool playSong = false;
 
 	// Use this for initialization
 	void Start () {
