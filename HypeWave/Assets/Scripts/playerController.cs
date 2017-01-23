@@ -22,7 +22,10 @@ public class playerController : MonoBehaviour {
 
     public CrowdPlayer crowdPlayer; //this is the player object in the crowd
 
-
+    public AudioSource source;
+    public AudioClip[] fails;
+    public AudioClip[] collisions;
+    public AudioClip wave;
     //public Renderer debugRenderer;
 
     bool whitePressed;
@@ -151,6 +154,7 @@ public class playerController : MonoBehaviour {
                 if (crowdPlayer.CreateWave())
                 {
                     myDisplay.hypeNumber -= 5;
+                    source.PlayOneShot(wave);
                     //AkSoundEngine.PostEvent("Play_CrowdWaveTrigger", waveSound.gameObject);
                 }
             }
