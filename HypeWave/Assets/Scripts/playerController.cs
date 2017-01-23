@@ -343,7 +343,7 @@ public class playerController : MonoBehaviour {
     public void PlayerDied()
     {
         // TODO
-        lives -= 1;
+
         isKOd = true;
         myDisplay.isKOd = isKOd;
         myCharacter.GetComponent<SpriteRenderer>().enabled = false;
@@ -353,7 +353,8 @@ public class playerController : MonoBehaviour {
 
     public void PlayerRespawned()
     {
-        // TODO
+        // TODO        
+        lives -= 1;
         isKOd = false;
         myDisplay.isKOd = isKOd;
 		myCharacter.GetComponent<SpriteRenderer>().enabled = true;

@@ -27,6 +27,7 @@ public class gameManager : MonoBehaviour {
                 mySong.playingGame=true;
                 break;
             case 2:
+                Application.LoadLevel(Application.loadedLevel);
                 break;
         }
         if (deathCount() > 2)
