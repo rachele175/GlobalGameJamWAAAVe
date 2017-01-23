@@ -24,7 +24,7 @@ public class gameManager : MonoBehaviour {
                 break;
             case 1:
                 startScreen.SetActive(false);
-                mySong.playSong=true;
+                mySong.playingGame=true;
                 break;
             case 2:
                 break;

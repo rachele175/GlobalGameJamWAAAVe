@@ -25,7 +25,7 @@ public class songScript : MonoBehaviour {
     private List<float> noteTimes= new List<float>();
 
     public bool playSong = false;
-
+    public bool playingGame = false;
 	// Use this for initialization
 	void Start () {
         noteCount = 0;
@@ -52,26 +52,29 @@ public class songScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        delayTime += Time.deltaTime;
-        if (delayTime>= delayGoal && !mySong.isPlaying)
+        if (playingGame)
         {
-            mySong.Play();
-            Debug.Log("PLAYING");
-        }
-
-
-        timeStamp += Time.deltaTime;
-        if (noteCount < notesList.Count)
-        {
-            if (timeStamp >= noteTimes[noteCount])
+            delayTime += Time.deltaTime;
+            if (delayTime >= delayGoal && !mySong.isPlaying)
             {
-                Debug.Log(timeStamp);
-                foreach (GameObject g in GameObject.FindGameObjectsWithTag("songDisplays"))
-                {
-                    g.GetComponent<songDisplayManager>().spawnNote(notesList[noteCount]);
+                mySong.Play();
+                Debug.Log("PLAYING");
+            }
 
+
+            timeStamp += Time.deltaTime;
+            if (noteCount < notesList.Count)
+            {
+                if (timeStamp >= noteTimes[noteCount])
+                {
+                    Debug.Log(timeStamp);
+                    foreach (GameObject g in GameObject.FindGameObjectsWithTag("songDisplays"))
+                    {
+                        g.GetComponent<songDisplayManager>().spawnNote(notesList[noteCount]);
+
+                    }
+                    noteCount++;
                 }
-                noteCount++;
             }
         }
 	}

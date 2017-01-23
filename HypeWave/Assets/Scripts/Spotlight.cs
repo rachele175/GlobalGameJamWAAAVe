@@ -33,12 +33,12 @@ public class Spotlight : MonoBehaviour {
         switch (target.GetComponent<playerController>().controllerNumber)
         {
             case 4:
-                GetComponent<SpriteRenderer>().color = PinkMonk;
-               beam.color = PinkMonk;
+                GetComponent<SpriteRenderer>().color = GreenIg;
+               beam.color = GreenIg;
                 break;
             case 1:
-                GetComponent<SpriteRenderer>().color = GreenIg;
-                beam.color = GreenIg;
+                GetComponent<SpriteRenderer>().color = PinkMonk;
+                beam.color = PinkMonk;
                 break;
             case 2:
                 GetComponent<SpriteRenderer>().color = OrangeEagle;

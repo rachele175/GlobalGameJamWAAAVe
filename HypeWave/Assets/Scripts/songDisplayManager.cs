@@ -315,7 +315,7 @@ public class songDisplayManager : MonoBehaviour {
     {
         if(playerNum== "j1")
         {
-            fretBoard.GetComponent<SpriteRenderer>().sprite = fretGreen;
+            fretBoard.GetComponent<SpriteRenderer>().sprite = fretPink;
         }
         else if (playerNum == "j2")
         {
@@ -327,7 +327,7 @@ public class songDisplayManager : MonoBehaviour {
         }
         else if (playerNum == "j4")
         {
-            fretBoard.GetComponent<SpriteRenderer>().sprite = fretPink;
+            fretBoard.GetComponent<SpriteRenderer>().sprite = fretGreen;
         }
     }
 
