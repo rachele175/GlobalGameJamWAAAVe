@@ -85,8 +85,10 @@ public class songDisplayManager : MonoBehaviour {
         moveNote(noteScript, g);
     }
 
-    public void strikeNote(noteColor noteCol)
+    public bool strikeNote(noteColor noteCol)
     {
+        bool success = true;
+
         List<GameObject> deleteNotes=new List<GameObject>();
         foreach(GameObject g in myNoteZone.strummableNotes)
         {
@@ -99,6 +101,7 @@ public class songDisplayManager : MonoBehaviour {
                 combo += 1;
                 deleteNotes.Add(g);
 
+                success = true;
             }
         }
         if (deleteNotes.Count==0)
@@ -109,8 +112,11 @@ public class songDisplayManager : MonoBehaviour {
             {
                 if(noMoreHype != null)noMoreHype();
             }
+
+            success = false;
+
         }
-        foreach(GameObject d in deleteNotes)
+        foreach (GameObject d in deleteNotes)
         {
             myNoteZone.strummableNotes.Remove(d);
             if (!isKOd)
@@ -119,8 +125,8 @@ public class songDisplayManager : MonoBehaviour {
             }
             Destroy(d, 0.2f);
         }
-        
 
+        return success;
     }
 
     public void moveNote(notePrefab n, noteColor c)
