@@ -118,7 +118,7 @@ public class CrowdMember : MonoBehaviour
             animator.enabled = false;
             vis.GetComponent<SpriteRenderer>().sprite = pitSprites[0];
 
-            if(UnityEngine.Random.Range(0f,1f) < 0.2f)
+            if(UnityEngine.Random.Range(0f,1f) < 0f)
             {
                 vis.GetComponent<SpriteRenderer>().enabled = false;
             }

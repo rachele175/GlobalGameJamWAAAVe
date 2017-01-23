@@ -107,7 +107,7 @@ public class songDisplayManager : MonoBehaviour {
             breakCombo();
             if (hypeNumber < -3)
             {
-                noMoreHype();
+                if(noMoreHype != null)noMoreHype();
             }
         }
         foreach(GameObject d in deleteNotes)

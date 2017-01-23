@@ -23,8 +23,6 @@ public class playerController : MonoBehaviour {
     public CrowdPlayer crowdPlayer; //this is the player object in the crowd
 
 
-    public WaveTrigger waveSound;
-    public AkAmbient impactSound;
     //public Renderer debugRenderer;
 
     bool whitePressed;
@@ -148,12 +146,11 @@ public class playerController : MonoBehaviour {
         if (Input.GetButtonDown("j" + controllerNumber + "Wave")) {
 			Debug.Log("j" + controllerNumber + " pressed rb");
             //call wave function
-            //if (myDisplay.hypeNumber > 4)
+            if (myDisplay.hypeNumber > 4)
             {
                 if (crowdPlayer.CreateWave())
                 {
-                    //myDisplay.hypeNumber -= 5;
-                    waveSound.Go();
+                    myDisplay.hypeNumber -= 5;
                     //AkSoundEngine.PostEvent("Play_CrowdWaveTrigger", waveSound.gameObject);
                 }
             }
@@ -232,6 +229,12 @@ public class playerController : MonoBehaviour {
             if (!whitePressed)
             {
                 myDisplay.strikeNote(noteColor.White);
+
+                if (creatingSong)
+                {
+                    strumTestTimes.Add(Time.time);
+                    noteTests.Add(0);
+                }
             }
             whitePressed = true;
 
@@ -250,6 +253,11 @@ public class playerController : MonoBehaviour {
             if (!yellowPressed)
             {
                 myDisplay.strikeNote(noteColor.Yellow);
+                if (creatingSong)
+                {
+                    strumTestTimes.Add(Time.time);
+                    noteTests.Add(1);
+                }
             }
             yellowPressed = true;
             myDisplay.pressFret(noteColor.Yellow);
@@ -268,6 +276,11 @@ public class playerController : MonoBehaviour {
             if (!greenPressed)
             {
                 myDisplay.strikeNote(noteColor.Green);
+                if (creatingSong)
+                {
+                    strumTestTimes.Add(Time.time);
+                    noteTests.Add(3);
+                }
             }
             myDisplay.pressFret(noteColor.Green);
             greenPressed = true;
@@ -288,6 +301,11 @@ public class playerController : MonoBehaviour {
             if (!redPressed)
             {
                 myDisplay.strikeNote(noteColor.Red);
+                if (creatingSong)
+                {
+                    strumTestTimes.Add(Time.time);
+                    noteTests.Add(2);
+                }
             }
             redPressed = true;
 

@@ -33,15 +33,15 @@ public class songScript : MonoBehaviour {
 
         if (playSong)
         {
-            StreamReader file = new StreamReader("FreeBirdRecord.txt");
+            StreamReader file = new StreamReader(fileName);
 
             while (!file.EndOfStream)
             {
-                Debug.Log("attempted");
+                //Debug.Log("attempted");
                 string line = file.ReadLine();
                 // Do Something with the input.
                 string[] nums = line.Split(' ');
-                noteTimes.Add(float.Parse(nums[0]));
+                noteTimes.Add(float.Parse(nums[0]) - 3 - delayGoal);
                 notesList.Add((noteColor)int.Parse(nums[1]));
             }
 
