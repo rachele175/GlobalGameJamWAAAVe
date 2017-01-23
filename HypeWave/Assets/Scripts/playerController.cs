@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 
 public class playerController : MonoBehaviour {
+
     List<float> strumTestTimes= new List<float>();
     List<int> noteTests = new List<int>();
     private string filename;
@@ -23,9 +24,9 @@ public class playerController : MonoBehaviour {
     public CrowdPlayer crowdPlayer; //this is the player object in the crowd
 
     public AudioSource source;
-    public AudioClip[] fails;
-    public AudioClip[] collisions;
-    public AudioClip wave;
+    //public AudioClip[] fails;
+    //public AudioClip[] collisions;
+    //public AudioClip wave;
     //public Renderer debugRenderer;
 
     bool whitePressed;
@@ -154,7 +155,7 @@ public class playerController : MonoBehaviour {
                 if (crowdPlayer.CreateWave())
                 {
                     myDisplay.hypeNumber -= 5;
-                    source.PlayOneShot(wave);
+                    //source.PlayOneShot(wave);
                     //AkSoundEngine.PostEvent("Play_CrowdWaveTrigger", waveSound.gameObject);
                 }
             }
@@ -234,7 +235,7 @@ public class playerController : MonoBehaviour {
             {
                 if(!myDisplay.strikeNote(noteColor.White))
                 {
-                    source.PlayOneShot(fails[0]);
+                    //source.PlayOneShot(fails[0]);
                 }
 
                 if (creatingSong)
@@ -261,7 +262,7 @@ public class playerController : MonoBehaviour {
             {
                 if (!myDisplay.strikeNote(noteColor.Yellow))
                 {
-                    source.PlayOneShot(fails[0]);
+                    //source.PlayOneShot(fails[0]);
                 }
                 if (creatingSong)
                 {
@@ -287,7 +288,7 @@ public class playerController : MonoBehaviour {
             {
                 if(!myDisplay.strikeNote(noteColor.Green))
                 {
-                    source.PlayOneShot(fails[0]);
+                   // source.PlayOneShot(fails[0]);
                 }
                 if (creatingSong)
                 {
@@ -315,7 +316,7 @@ public class playerController : MonoBehaviour {
             {
                 if(!myDisplay.strikeNote(noteColor.Red))
                 {
-                    source.PlayOneShot(fails[0]);
+                    //source.PlayOneShot(fails[0]);
                 }
                 if (creatingSong)
                 {
