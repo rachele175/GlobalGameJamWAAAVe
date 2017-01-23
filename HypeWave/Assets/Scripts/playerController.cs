@@ -22,7 +22,10 @@ public class playerController : MonoBehaviour {
 
     public CrowdPlayer crowdPlayer; //this is the player object in the crowd
 
-
+    public AudioSource source;
+    public AudioClip[] fails;
+    public AudioClip[] collisions;
+    public AudioClip wave;
     //public Renderer debugRenderer;
 
     bool whitePressed;
@@ -34,8 +37,13 @@ public class playerController : MonoBehaviour {
     private Spotlight spotlight;
 
     public bool isKOd;
+    public int lives;
+    public bool dead;
+
     void Start()
 	{
+        dead = false;
+        lives = 1;
 		Debug.Log("j" + controllerNumber);
         strummed = false;
         myDisplay = Instantiate(songDisplayManagerPrefab);
@@ -146,6 +154,7 @@ public class playerController : MonoBehaviour {
                 if (crowdPlayer.CreateWave())
                 {
                     myDisplay.hypeNumber -= 5;
+                    source.PlayOneShot(wave);
                     //AkSoundEngine.PostEvent("Play_CrowdWaveTrigger", waveSound.gameObject);
                 }
             }
@@ -223,7 +232,10 @@ public class playerController : MonoBehaviour {
             myDisplay.pressFret(noteColor.White);
             if (!whitePressed)
             {
-                myDisplay.strikeNote(noteColor.White);
+                if(myDisplay.strikeNote(noteColor.White))
+                {
+                    source.PlayOneShot(fails[0]);
+                }
 
                 if (creatingSong)
                 {
@@ -247,7 +259,10 @@ public class playerController : MonoBehaviour {
             //call rhythm game functions
             if (!yellowPressed)
             {
-                myDisplay.strikeNote(noteColor.Yellow);
+                if (!myDisplay.strikeNote(noteColor.Yellow))
+                {
+                    source.PlayOneShot(fails[0]);
+                }
                 if (creatingSong)
                 {
                     strumTestTimes.Add(Time.time);
@@ -270,7 +285,10 @@ public class playerController : MonoBehaviour {
             //call rhythm game functions
             if (!greenPressed)
             {
-                myDisplay.strikeNote(noteColor.Green);
+                if(myDisplay.strikeNote(noteColor.Green))
+                {
+                    source.PlayOneShot(fails[0]);
+                }
                 if (creatingSong)
                 {
                     strumTestTimes.Add(Time.time);
@@ -295,7 +313,10 @@ public class playerController : MonoBehaviour {
             myDisplay.pressFret(noteColor.Red);
             if (!redPressed)
             {
-                myDisplay.strikeNote(noteColor.Red);
+                if(myDisplay.strikeNote(noteColor.Red))
+                {
+                    source.PlayOneShot(fails[0]);
+                }
                 if (creatingSong)
                 {
                     strumTestTimes.Add(Time.time);
@@ -321,6 +342,7 @@ public class playerController : MonoBehaviour {
     public void PlayerDied()
     {
         // TODO
+        lives -= 1;
         isKOd = true;
         myDisplay.isKOd = isKOd;
         myCharacter.GetComponent<SpriteRenderer>().enabled = false;
