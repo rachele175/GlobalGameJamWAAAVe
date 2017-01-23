@@ -232,7 +232,7 @@ public class playerController : MonoBehaviour {
             myDisplay.pressFret(noteColor.White);
             if (!whitePressed)
             {
-                if(myDisplay.strikeNote(noteColor.White))
+                if(!myDisplay.strikeNote(noteColor.White))
                 {
                     source.PlayOneShot(fails[0]);
                 }
@@ -285,7 +285,7 @@ public class playerController : MonoBehaviour {
             //call rhythm game functions
             if (!greenPressed)
             {
-                if(myDisplay.strikeNote(noteColor.Green))
+                if(!myDisplay.strikeNote(noteColor.Green))
                 {
                     source.PlayOneShot(fails[0]);
                 }
@@ -313,7 +313,7 @@ public class playerController : MonoBehaviour {
             myDisplay.pressFret(noteColor.Red);
             if (!redPressed)
             {
-                if(myDisplay.strikeNote(noteColor.Red))
+                if(!myDisplay.strikeNote(noteColor.Red))
                 {
                     source.PlayOneShot(fails[0]);
                 }
