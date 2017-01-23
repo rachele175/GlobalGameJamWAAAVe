@@ -36,8 +36,13 @@ public class playerController : MonoBehaviour {
     private Spotlight spotlight;
 
     public bool isKOd;
+    public int lives;
+    public bool dead;
+
     void Start()
 	{
+        dead = false;
+        lives = 1;
 		Debug.Log("j" + controllerNumber);
         strummed = false;
         myDisplay = Instantiate(songDisplayManagerPrefab);
@@ -303,6 +308,7 @@ public class playerController : MonoBehaviour {
     public void PlayerDied()
     {
         // TODO
+        lives -= 1;
         isKOd = true;
         myDisplay.isKOd = isKOd;
         myCharacter.GetComponent<SpriteRenderer>().enabled = false;

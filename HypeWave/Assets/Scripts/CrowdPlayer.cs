@@ -95,12 +95,19 @@ public class CrowdPlayer : MonoBehaviour
         }
         else
         {
-            if(Time.time - deathTime > respawnTime)
+            if(Time.time - deathTime > respawnTime )
             {
-                //respawn
-                dead = false;
-                controller.PlayerRespawned();
-                transform.position = respawn.transform.position;
+                if (controller.lives > 0)
+                {
+                    //respawn
+                    dead = false;
+                    controller.PlayerRespawned();
+                    transform.position = respawn.transform.position;
+                }
+                else
+                {
+                    controller.dead = true;
+                }
             }
         }
     }
